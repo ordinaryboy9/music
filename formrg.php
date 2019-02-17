@@ -22,7 +22,7 @@
        <div id="navigation">
         <ul>
           <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
-          <li><a href="register.php">เข้าสู่ระบบ</a></li>
+          <li><a href="login.php">เข้าสู่ระบบ</a></li>
         </ul>
       </div>
     </div>
