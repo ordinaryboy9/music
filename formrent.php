@@ -9,17 +9,6 @@
 <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
 <script src="js/jquery.slide.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
-<style>
-.row{
-	display:-webkit-box;
-	display:-ms-flexbox;
-	display:flex;
-	-ms-flex-wrap:wrap;
-	flex-wrap:wrap;
-	margin-right:-10px;
-	margin-left:-10px
-}
-</style>
 </head>
 <body>
 <!-- Top -->
@@ -59,14 +48,6 @@
   <div class="shell">
    <!-- Search, etc -->
     <div class="options">
-      <div class="search">
-        <form action="#" method="post">
-          <span class="field">
-          <input type="text" class="blink" value="SEARCH" title="SEARCH" />
-          </span>
-          <input type="text" class="search-submit" value="GO" />
-        </form>
-      </div>
       <div class="right"></div>
     </div>
     <!-- End Search, etc -->
@@ -75,46 +56,45 @@
       <!-- Container -->
       <div id="container">
         <div class="tabbed" align="center" style="margin-left: 12%">
-          <div id=<div align="center" class="row">
-              <div>
-                  <img src="css/images/button.gif" width="250" height="200"  />
-                  <div>
-                     <font>กีต้าร์ไฟฟ้า</font>
-                  </div>
-              </div>
-              <div>
-                  <img src="css/images/buttonguter.gif" width="250" height="200"  />
-                  <div>
-                     <font>กีต้าร์โปร่ง</font>
-                  </div>
-              </div>
-              <div>
-                  <img src="css/images/buttondrum.gif" width="250" height="200"  />
-                  <div>
-                     <font>กลอง</font>
-                  </div>
-              </div>
-          </div>
-          <div id=<div align="center" class="row">
-              <div>
-                  <img src="css/images/buttonbass.gif" width="250" height="200"  />
-                  <div>
-                     <font>กีต้าร์เบส</font>
-                  </div>
-              </div>
-              <div>
-                  <img src="css/images/buttoneff.gif" width="250" height="200"  />
-                  <div>
-                     <font>เอฟเฟค</font>
-                  </div>
-              </div>
-              <div>
-                  <img src="css/images/buttonnn.gif" width="250" height="200"  />
-                  <div>
-                     <font>รายการอื่นๆ</font>
-                  </div>
-              </div>
-          </div>
+          <form id="form1" name="form1" method="post" action="">
+          <div class="tab-content" style="display:block;">
+            <h1><center>
+            ลงเช่าสินค้า
+                <table width="68%" border="0" style="font-size:18px; margin-top:30px" >
+             
+              <tr>
+                <td height="35" align="right"><b style="margin-right: 10px"> ชื่อสินค้าที่คุณต้องการลงเช่า </b></td>
+                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+              </tr>
+              <tr>
+                <td height="35" align="right"><b style="margin-right: 10px"> ระบุราคาค้าบริการ </b></td>
+                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+              </tr>
+              <tr>
+                <td height="35" align="right"><b style="margin-right: 10px"> รูปภาพ </b></td>
+                <td><input type="file" /></td>
+              </tr>
+              <tr>
+                <td height="35" align="right"><b style="margin-right: 10px"> รายละเอียดสินค้า </b></td>
+                <td>
+                <textarea name="" cols="40" rows="6"></textarea>
+                </td>
+              </tr>
+               <tr>
+                <td height="35" align="right"><b style="margin-right: 10px"> เบอร์โทรติดต่อ </b></td>
+                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+              </tr>
+               <tr>
+                <td height="35" align="right"><b style="margin-right: 10px"> IDline </b></td>
+                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+              </tr>
+               <em> 
+            </table>
+            <input type="submit" value="ลงขาย"  style="height:30px;" width="80px"/>
+           
+            </center></h1>
+        <p><center></center></p>
+          </form>
         </div>
         <!-- Brands --><!-- End Brands -->
         <!-- Footer -->

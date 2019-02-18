@@ -11,13 +11,23 @@
 <script src="js/jquery-func.js" type="text/javascript"></script>
 <style>
 .row{
-	display:-webkit-box;
-	display:-ms-flexbox;
-	display:flex;
-	-ms-flex-wrap:wrap;
-	flex-wrap:wrap;
-	margin-right:-10px;
-	margin-left:-10px
+display:-webkit-box;
+display:-ms-flexbox;
+display:flex;
+-ms-flex-wrap:wrap;
+flex-wrap:wrap;
+margin-right:-10px;
+margin-left:-10px
+}
+.card{
+ 	box-shadow:0 3px 3px 0 rgba(0,0,0,0.6);
+    transition:0.4s;
+    width:150px;
+    backgroound:#fff;
+    text-align:center;
+    font-site:16px;
+    font-family:sans-serif;
+    margin:10px	
 }
 </style>
 </head>
@@ -55,64 +65,28 @@
 </div>
 <!-- Top -->
 <!-- Main -->
-<div id="main">
-  <div class="shell">
-   <!-- Search, etc -->
-    <div class="options">
-      <div class="search">
-        <form action="#" method="post">
-          <span class="field">
-          <input type="text" class="blink" value="SEARCH" title="SEARCH" />
-          </span>
-          <input type="text" class="search-submit" value="GO" />
-        </form>
-      </div>
-      <div class="right"></div>
-    </div>
-    <!-- End Search, etc -->
-    <!-- Content -->
-    <div id="content"><!-- Tabs --><!-- Tabs -->
-      <!-- Container -->
+
       <div id="container">
+       
         <div class="tabbed" align="center" style="margin-left: 12%">
-          <div id=<div align="center" class="row">
-              <div>
-                  <img src="css/images/button.gif" width="250" height="200"  />
-                  <div>
-                     <font>กีต้าร์ไฟฟ้า</font>
-                  </div>
-              </div>
-              <div>
-                  <img src="css/images/buttonguter.gif" width="250" height="200"  />
-                  <div>
-                     <font>กีต้าร์โปร่ง</font>
-                  </div>
-              </div>
-              <div>
-                  <img src="css/images/buttondrum.gif" width="250" height="200"  />
-                  <div>
-                     <font>กลอง</font>
-                  </div>
-              </div>
-          </div>
-          <div id=<div align="center" class="row">
-              <div>
-                  <img src="css/images/buttonbass.gif" width="250" height="200"  />
-                  <div>
-                     <font>กีต้าร์เบส</font>
-                  </div>
-              </div>
-              <div>
-                  <img src="css/images/buttoneff.gif" width="250" height="200"  />
-                  <div>
-                     <font>เอฟเฟค</font>
-                  </div>
-              </div>
-              <div>
-                  <img src="css/images/buttonnn.gif" width="250" height="200"  />
-                  <div>
-                     <font>รายการอื่นๆ</font>
-                  </div>
+            <div class="row">
+                <div style="width: 150px; margin-right: 20">
+                    <div>
+                    	<font>dasd</font>
+                    </div>
+                    <div>
+                    	<font>dasd</font>
+                    </div>
+                    <div>
+                    	<font>dasd</font>
+               		</div>
+                </div>
+              <div class="card">
+                <img src="css/images/514.jpg" alt="messi" style="width:98%" height="100" />
+                <div class="cantainer">
+                <h4><b> ชื่อสินค้า </b></h4>
+                <p>ชื่อคนส่ง</p>
+                <p>ราคา</p>
               </div>
           </div>
         </div>

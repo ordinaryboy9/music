@@ -48,14 +48,6 @@
   <div class="shell">
    <!-- Search, etc -->
     <div class="options">
-      <div class="search">
-        <form action="#" method="post">
-          <span class="field">
-          <input type="text" class="blink" value="SEARCH" title="SEARCH" />
-          </span>
-          <input type="text" class="search-submit" value="GO" />
-        </form>
-      </div>
       <div class="right"></div>
     </div>
     <!-- End Search, etc -->

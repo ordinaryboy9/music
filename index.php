@@ -91,7 +91,7 @@
                     </td>
                     <td>
                         <div class="image"> 
-                        	<a href="#"><img src="css/images/forrent.png" alt="" /></a> 
+                        	<a href="formrent.php"><img src="css/images/forrent.png" alt="" /></a> 
                        </div>
                     </td>
                 </tr>
