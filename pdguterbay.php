@@ -20,9 +20,19 @@ margin-right:-10px;
 margin-left:-10px
 }
 .card{
+ 	box-shadow:0 10px 10px 0 rgba(0,0,0,0.6);
+    transition:0.4s;
+    width:280px;
+    backgroound:#fff;
+    text-align:center;
+    font-site:16px;
+    font-family:sans-serif;
+    margin:10px	
+}
+.card1{
  	box-shadow:0 3px 3px 0 rgba(0,0,0,0.6);
     transition:0.4s;
-    width:150px;
+    width:200px;
     backgroound:#fff;
     text-align:center;
     font-site:16px;
@@ -42,7 +52,7 @@ margin-left:-10px
     </a>
       <div id="navigation">
         <ul>
-          <li> </li>
+          
           <li><a href="#">ออกระบบ</a></li>
         </ul>
       </div>
@@ -69,20 +79,19 @@ margin-left:-10px
       <div id="container">
        
         <div class="tabbed" align="center" style="margin-left: 12%">
+        
             <div class="row">
-                <div style="width: 150px; margin-right: 20">
-                    <div>
-                    	<font>dasd</font>
-                    </div>
-                    <div>
-                    	<font>dasd</font>
-                    </div>
-                    <div>
-                    	<font>dasd</font>
-               		</div>
+            <div class="card1">
+                <div style="width: 150px; margin-right: 20;" align="center">
+                 <div style="color:#000; font-size:16px;">
+                    <ul>
+                    	<a href="login.php" >เข้าสู่ระบบ</a>
+                    </ul>
+     			 </div>
                 </div>
+              </div>
               <div class="card">
-                <img src="css/images/514.jpg" alt="messi" style="width:98%" height="100" />
+                <img src="css/images/514.jpg" alt="messi" style="width:100%" height="200" />
                 <div class="cantainer">
                 <h4><b> ชื่อสินค้า </b></h4>
                 <p>ชื่อคนส่ง</p>
