@@ -10,6 +10,14 @@
 <script src="js/jquery.slide.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
 <style>
+#d { float:right; white-space:nowrap;size: }
+#d ul{ list-style-type: none; padding-top:50px;}
+#d ul li{ float:left; display:inline; padding-right:8px; margin-right:8px;}
+#d ul li.last{ border-right:0; padding-right:0; margin-right:0;}
+#d ul li a{ color:#000;}
+#d ul li a:hover,
+#d ul li a.active { color:#00FF99; }
+
 .row{
 display:-webkit-box;
 display:-ms-flexbox;
@@ -23,6 +31,7 @@ margin-left:-10px
  	box-shadow:0 10px 10px 0 rgba(0,0,0,0.6);
     transition:0.4s;
     width:280px;
+	height:300px;
     backgroound:#fff;
     text-align:center;
     font-site:16px;
@@ -30,32 +39,87 @@ margin-left:-10px
     margin:10px	
 }
 .card1{
- 	box-shadow:0 3px 3px 0 rgba(0,0,0,0.6);
+ 	box-shadow:0 7px 7px 0 rgba(0,0,0,0.6);
     transition:0.4s;
-    width:200px;
+    width:230px;
+	height:400px;
     backgroound:#fff;
     text-align:center;
     font-site:16px;
     font-family:sans-serif;
     margin:10px	
 }
+.dropbtn {
+  background-color: #FFFF66;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #CC3366;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 </style>
 </head>
 <body>
+ <?php 
+	$Username = "";
+
+	if(isset($_GET["UserName"])){
+		$Username = $_GET["UserName"];
+	}
+?>
 <!-- Top -->
 <div id="top">
   <div class="shell">
     <!-- Header -->
     <div id="header">
-    <a href="index.php" class="logo pull-left">
+    <a href="index.php?UserName=<?php echo $Username; ?>" class="logo pull-left">
     	<img src="css/images/logo.jpg" class="site_logoo" alt="" />
     </a>
+   
+	<?php if($Username === ''):?>
       <div id="navigation">
         <ul>
-          
-          <li><a href="#">ออกระบบ</a></li>
+          <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
+          <li><a href="login.php">เข้าสู่ระบบ</a></li>
         </ul>
       </div>
+      <?php elseif($Username !== ''):?>
+      <div id="navigation" style="margin-top: 2%">
+    	<span style="font-size: 18px; color:#FFF"><?php echo $Username; ?></span>
+        <div class="dropdown" style="margin-left:2%;">
+          <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
+          <div class="dropdown-content">
+            <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
+            <a href="logout.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+          </div>
+        </div>
+    </div>
+      <?php endif;?>
     </div>
     <!-- End Header -->
     <!-- Slider -->
@@ -78,14 +142,30 @@ margin-left:-10px
 
       <div id="container">
        
-        <div class="tabbed" align="center" style="margin-left: 12%">
+        <div class="tabbed" align="center" >
         
             <div class="row">
             <div class="card1">
                 <div style="width: 150px; margin-right: 20;" align="center">
-                 <div style="color:#000; font-size:16px;">
+           			 <h1>หมวดหมู่</h1> 
+                 <div id="d" style="font-size:20px">
                     <ul>
-                    	<a href="login.php" >เข้าสู่ระบบ</a>
+                    	<li> <a href="login.php" >กีต้าร์ไฟ้า</a></li>
+                    </ul>
+                    <ul>
+                    	<li> <a href="login.php" >กีต้าร์โปร่ง</a></li>
+                    </ul>
+                    <ul>
+                    	<li> <a href="login.php" >กลองชุด</a></li>
+                    </ul>
+               		<ul>
+                    	<li> <a href="login.php" >เบส</a></li>
+                    </ul>
+                    <ul>
+                    	<li> <a href="login.php" >เอฟเฟค</a></li>
+                    </ul>
+                    <ul>
+                    	<li> <a href="login.php" >รายการอื่นๆ</a></li>
                     </ul>
      			 </div>
                 </div>
@@ -99,6 +179,7 @@ margin-left:-10px
               </div>
           </div>
         </div>
+        
         <!-- Brands --><!-- End Brands -->
         <!-- Footer -->
         <div id="footer">

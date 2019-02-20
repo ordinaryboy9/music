@@ -28,7 +28,7 @@
     </div>
   <div id="container">
         <div class="tabbed" align="center" style="margin-left: 12%">
-          <form id="form1" name="form1" method="post" action="">
+          <form id="form1" name="form1" method="post" action="Check_login.php" enctype="multipart/form-data">
           <div class="tab-content" style="display:block;">
             <h1><center>
             เข้าสู่ระบบ
@@ -38,11 +38,11 @@
             <table width="68%" border="0" style="font-size:18px; margin-top:30px" > 
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px">USERMANE </b></td>
-                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+                <td><input type="text" name="username" style="height: 20px; width: 200px" /></td>
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> PASSWORD </b></td>
-                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+                <td><input type="text" name="password" style="height: 20px; width: 200px" /></td>
               </tr>  
                <em> 
             </table>

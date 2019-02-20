@@ -19,23 +19,77 @@
 	margin-right:-10px;
 	margin-left:-10px
 }
+.dropbtn {
+  background-color: #FFFF66;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #CC3366;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 </style>
 </head>
 <body>
+ <?php 
+	$Username = "";
+
+	if(isset($_GET["UserName"])){
+		$Username = $_GET["UserName"];
+	}
+?>
 <!-- Top -->
 <div id="top">
   <div class="shell">
     <!-- Header -->
     <div id="header">
-    <a href="index.php" class="logo pull-left">
+    <a href="index.php?UserName=<?php echo $Username; ?>" class="logo pull-left">
     	<img src="css/images/logo.jpg" class="site_logoo" alt="" />
     </a>
+   
+	<?php if($Username === ''):?>
       <div id="navigation">
         <ul>
-          <li> </li>
-          <li><a href="#">ออกระบบ</a></li>
+          <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
+          <li><a href="login.php">เข้าสู่ระบบ</a></li>
         </ul>
       </div>
+      <?php elseif($Username !== ''):?>
+      <div id="navigation" style="margin-top: 2%">
+    	<span style="font-size: 18px; color:#FFF"><?php echo $Username; ?></span>
+        <div class="dropdown" style="margin-left:2%;">
+          <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
+          <div class="dropdown-content">
+            <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
+            <a href="logout.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+          </div>
+        </div>
+    </div>
+      <?php endif;?>
     </div>
     <!-- End Header -->
     <!-- Slider -->
@@ -76,8 +130,8 @@
       <div id="container">
         <div class="tabbed" align="center" style="margin-left: 12%">
           <div id=<div align="center" class="row">
-              <div>
-                  <img src="css/images/button.gif" width="250" height="200"  />
+              <div> <a href="pdguterbay.php?UserName=<?php echo $Username; ?>">
+              <img src="css/images/button.gif" width="250" height="200"  /></a>
                   <div>
                      <font>กีต้าร์ไฟฟ้า</font>
                   </div>

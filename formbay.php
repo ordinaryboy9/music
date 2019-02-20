@@ -9,22 +9,78 @@
 <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
 <script src="js/jquery.slide.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
+<style>
+.dropbtn {
+  background-color: #FFFF66;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #CC3366;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
 </head>
 <body>
+ <?php 
+	$Username = "";
+
+	if(isset($_GET["UserName"])){
+		$Username = $_GET["UserName"];
+	}
+?>
 <!-- Top -->
 <div id="top">
   <div class="shell">
     <!-- Header -->
     <div id="header">
-    <a href="index.php" class="logo pull-left">
+    <a href="index.php?UserName=<?php echo $Username; ?>" class="logo pull-left">
     	<img src="css/images/logo.jpg" class="site_logoo" alt="" />
     </a>
+   
+	<?php if($Username === ''):?>
       <div id="navigation">
         <ul>
-          <li> </li>
-          <li><a href="#">ออกระบบ</a></li>
+          <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
+          <li><a href="login.php">เข้าสู่ระบบ</a></li>
         </ul>
       </div>
+      <?php elseif($Username !== ''):?>
+      <div id="navigation" style="margin-top: 2%">
+    	<span style="font-size: 18px; color:#FFF"><?php echo $Username; ?></span>
+        <div class="dropdown" style="margin-left:2%;">
+          <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
+          <div class="dropdown-content">
+            <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
+            <a href="logout.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+          </div>
+        </div>
+    </div>
+      <?php endif;?>
     </div>
     <!-- End Header -->
     <!-- Slider -->
@@ -56,7 +112,8 @@
       <!-- Container -->
       <div id="container">
         <div class="tabbed" align="center" style="margin-left: 12%">
-          <form id="form1" name="form1" method="post" action="">
+          <form id="form1" name="form1" method="post" action="InsertProduce.php" enctype="multipart/form-data" target="iframe_target">
+                    <iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>>
           <div class="tab-content" style="display:block;">
             <h1><center>
             ลงขายสินค้า
@@ -66,7 +123,7 @@
                 height="35" align="right"><b style="margin-right: 10px"> เลือกหมวดหมู่ให้ตรงกับสินค้า </b>
                 </td>
                 <td>
-                <select name="select" style="height: 30px; width: 200px; font-size:15px">
+                <select name="typemusic" id="typemusic" style="height: 30px; width: 200px; font-size:15px">
                   <option value="guitar"> กีต้าร์โปร่ง</option>
                   <option value="guitaret"> กีต้าร์ไฟฟ้า</option>
                   <option value="bass"> กีต้าร์เบส</option>
@@ -78,29 +135,29 @@
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> ชื่อสินค้าที่คุณต้องการลงขาย </b></td>
-                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+                <td><input type="text" name="namepd" style="height: 20px; width: 200px" /></td>
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> ระบุราคาสินค้า </b></td>
-                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+                <td><input type="text" name="pricepd" style="height: 20px; width: 200px" /></td>
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> รูปภาพ </b></td>
-                <td><input type="file" /></td>
+                <td><input type="file" name="imgpd" /></td>
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> รายละเอียดสินค้า </b></td>
                 <td>
-                <textarea name="" cols="40" rows="6"></textarea>
+                <textarea name="detailpd" cols="40" rows="6"></textarea>
                 </td>
               </tr>
                <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> เบอร์โทรติดต่อ </b></td>
-                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+                <td><input type="text" name="telpd" style="height: 20px; width: 200px" /></td>
               </tr>
                <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> IDline </b></td>
-                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+                <td><input type="text" name="linepd" style="height: 20px; width: 200px" /></td>
               </tr>
                <em> 
             </table>

@@ -9,22 +9,78 @@
 <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
 <script src="js/jquery.slide.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
+<style>
+.dropbtn {
+  background-color: #FFFF66;
+  color: white;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #CC3366;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
 </head>
 <body>
+ <?php 
+	$Username = "";
+
+	if(isset($_GET["UserName"])){
+		$Username = $_GET["UserName"];
+	}
+?>
 <!-- Top -->
 <div id="top">
   <div class="shell">
     <!-- Header -->
     <div id="header">
-    <a href="index.php" class="logo pull-left">
+    <a href="index.php?UserName=<?php echo $Username; ?>" class="logo pull-left">
     	<img src="css/images/logo.jpg" class="site_logoo" alt="" />
     </a>
+   
+	<?php if($Username === ''):?>
       <div id="navigation">
         <ul>
           <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
           <li><a href="login.php">เข้าสู่ระบบ</a></li>
         </ul>
       </div>
+      <?php elseif($Username !== ''):?>
+      <div id="navigation" style="margin-top: 2%">
+    	<span style="font-size: 18px; color:#FFF"><?php echo $Username; ?></span>
+        <div class="dropdown" style="margin-left:2%;">
+          <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
+          <div class="dropdown-content">
+            <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
+            <a href="logout.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+          </div>
+        </div>
+    </div>
+      <?php endif;?>
     </div>
     <!-- End Header -->
     <!-- Slider -->
@@ -48,14 +104,7 @@
   <div class="shell">
    <!-- Search, etc -->
     <div class="options">
-      <div class="search">
-        <form action="#" method="post">
-          <span class="field">
-          <input type="text" class="blink" value="SEARCH" title="SEARCH" />
-          </span>
-          <input type="text" class="search-submit" value="GO" />
-        </form>
-      </div>
+      
       <div class="right"></div>
     </div>
     <!-- End Search, etc -->
@@ -69,7 +118,10 @@
               <table width="80%" border="0" cellspacing="40">
               	<tr>
                 	<td>
-                        <div class="image"><a href="formbay.php"><img src="css/images//sell.png" alt="" /></a></div>
+                        <div class="image">
+                        <a href="formbay.php?UserName=<?php echo $Username; ?>">
+                        <img src="css/images//sell.png" alt="" /></a>
+                        </div>
                     </td>
                     <td>
                         <li><br />
@@ -91,14 +143,16 @@
                     </td>
                     <td>
                         <div class="image"> 
-                        	<a href="formrent.php"><img src="css/images/forrent.png" alt="" /></a> 
+                        	<a href="formrent.php?UserName=<?php echo $Username; ?>">
+                            <img src="css/images/forrent.png" alt="" /></a> 
                        </div>
                     </td>
                 </tr>
                 <tr>
                 	<td>
                         <div class="image"> 
-                        	<a href="category.php"><img src="css/images/buy.png" alt="" /></a> 
+                        	<a href="category.php?UserName=<?php echo $Username; ?>">
+                            <img src="css/images/buy.png" alt="" /></a> 
                        </div>
                     </td>
                     <td><li>

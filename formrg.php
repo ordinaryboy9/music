@@ -11,21 +11,43 @@
 <script src="js/jquery-func.js" type="text/javascript"></script>
 </head>
 <body>
+ <?php 
+	$Username = "";
+
+	if(isset($_GET["UserName"])){
+		$Username = $_GET["UserName"];
+	}
+?>
 <!-- Top -->
 <div id="top">
   <div class="shell">
     <!-- Header -->
     <div id="header">
-    <a href="index.php" class="logo pull-left">
+    <a href="index.php?UserName=<?php echo $Username; ?>" class="logo pull-left">
     	<img src="css/images/logo.jpg" class="site_logoo" alt="" />
     </a>
-       <div id="navigation">
+   
+	<?php if($Username === ''):?>
+      <div id="navigation">
         <ul>
           <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
           <li><a href="login.php">เข้าสู่ระบบ</a></li>
         </ul>
       </div>
+      <?php elseif($Username !== ''):?>
+      <div id="navigation" style="margin-top: 2%">
+    	<span style="font-size: 18px; color:#FFF"><?php echo $Username; ?></span>
+        <div class="dropdown" style="margin-left:2%;">
+          <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
+          <div class="dropdown-content">
+            <a href="logout.php?username=<?php echo $Username; ?>">ออกจากระบบ</a>
+            <a href="logout.php?username=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+          </div>
+        </div>
     </div>
+      <?php endif;?>
+    </div>
+    <!-- End Header -->
     <!-- End Header -->
     <!-- Slider -->
     <div id="slider">
@@ -71,8 +93,8 @@
           <div class="tab-content" style="display:block;">
             <h1><center>สมัครสมาชิกใหม่</center></h1>
         <p><center>กรุณากรอกข้อมูลให้ครบทุกช่อง</center></p>
-      
-        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="5">
+      <form name="formrg" action="InsertRegister.php" method="post" enctype="multipart/form-data" >
+              <table width="100%" border="0" align="center" cellpadding="0" cellspacing="5">
             <tr>
               <td width="33%" valign="top"><div align="right"><strong>ชื่อผู้ใช้</strong></div>
               <div align="right"><span class="small">Username</span>                </div></td>
@@ -131,6 +153,8 @@
           </table> 
         <em>
         <center><input type="submit" name="submit" id="submit"  value="ลงทะเบียน"  onClick="return CheckValidity();"/></center>
+          </form>
+
           </div>
           <!-- End First Tab Content -->
           <!-- Second Tab Content -->
