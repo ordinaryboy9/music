@@ -10,14 +10,44 @@
 <script src="js/jquery.slide.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
 <style>
+#d { float:right; white-space:nowrap;size: }
+#d ul{ list-style-type: none; padding-top:50px;}
+#d ul li{ float:left; display:inline; padding-right:8px; margin-right:8px;}
+#d ul li.last{ border-right:0; padding-right:0; margin-right:0;}
+#d ul li a{ color:#000;}
+#d ul li a:hover,
+#d ul li a.active { color:#00FF99; }
+
 .row{
-	display:-webkit-box;
-	display:-ms-flexbox;
-	display:flex;
-	-ms-flex-wrap:wrap;
-	flex-wrap:wrap;
-	margin-right:-10px;
-	margin-left:-10px
+display:-webkit-box;
+display:-ms-flexbox;
+display:flex;
+-ms-flex-wrap:wrap;
+flex-wrap:wrap;
+margin-right:-10px;
+margin-left:-10px
+}
+.card{
+ 	box-shadow:0 7px 7px 0 rgba(0,0,0,0.6);
+    transition:0.4s;
+    width:280px;
+	height:300px;
+    backgroound:#fff;
+    text-align:center;
+    font-site:16px;
+    font-family:sans-serif;
+    margin:10px	
+}
+.card1{
+ 	box-shadow:0 3px 3px 0 rgba(0,0,0,0.6);
+    transition:0.4s;
+    width:350px;
+	height:350px;
+    background-color:#FF9;
+    text-align:center;
+    font-site:16px;
+    font-family:sans-serif;
+    margin:10px	
 }
 .dropbtn {
   background-color: #FFFF66;
@@ -109,67 +139,73 @@
 </div>
 <!-- Top -->
 <!-- Main -->
-<div id="main">
-  <div class="shell">
-   <!-- Search, etc -->
-    <div class="options">
-      
-      <div class="right"></div>
-    </div>
-   
-    <!-- End Search, etc -->
-    <!-- Content -->
-    <div id="content"><!-- Tabs --><!-- Tabs -->
-      <!-- Container -->
+<?php
+        include("connect.php");
+        $ID = null;
+        if(isset($_GET["id"])){
+            $ID = $_GET["id"];
+        }
+
+        $sql = "SELECT * FROM productbay WHERE id = '".$ID."'";
+        $query = mysqli_query($conn, $sql);
+        $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
+
+    ?>
       <div id="container">
-        <div class="tabbed" align="center" style="margin-left: 12%">
-          <div id=<div align="center" class="row">
-              <div> <a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=guitaret">
-              <img src="css/images/button.gif" width="250" height="200"  /></a>
-                  <div>
-                     <font>กีต้าร์ไฟฟ้า</font>
-                  </div>
+       
+        <div class="tabbed" align="center" >
+        
+            
+              <div style="width:1300px; height:400px; background-color:#666; padding-top: 6%;" align="center">
+               <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:30%;height:300px;"  />
+                
               </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=guitar">
-                  <img src="css/images/buttonguter.gif" width="250" height="200"  /></a>
-                  <div>
-                     <font>กีต้าร์โปร่ง</font>
-                  </div>
-              </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=drum">
-                  <img src="css/images/buttondrum.gif" width="250" height="200"  />
-                  <div>
-                     <font>กลอง</font>
-                  </div>
-              </div>
-          </div>
-          <div id=<div align="center" class="row">
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=bass">
-                  <img src="css/images/buttonbass.gif" width="250" height="200"  />
-                  <div>
-                     <font>กีต้าร์เบส</font>
-                  </div>
-              </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=effects">
-                  <img src="css/images/buttoneff.gif" width="250" height="200"  />
-                  <div>
-                     <font>เอฟเฟค</font>
-                  </div>
-              </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=items">
-                  <img src="css/images/buttonnn.gif" width="250" height="200"  />
-                  <div>
-                     <font>รายการอื่นๆ</font>
-                  </div>
-              </div>
-          </div>
+           	<div class="row"> 
+            <div align="left">
+            <div class="card1">
+             
+             <div style="width: 150px; margin-left: 20px;p padding-top: 9%; ">	
+             <div id="d" style="font-size:12px">
+                 	
+                    <div class="row">
+                	 <img src="css/images/user2.png"  style="width:50px; height:60px; padding-top: 9%"/>
+                 		<ul>
+                 		<li> <a style="margin-left:5px"><?php echo ($result["user"]);?></a> </li>
+                   		</ul>
+                     </div>
+                     <div class="row">
+                	 <img src="css/images/monny-png.png"  style="width:50px; height:70px; padding-top: 10%"/>
+                 		<ul>
+                 		<li> <a style="margin-left:5px"><?php echo ($result["price"]);?></a> </li>
+                   		</ul>
+                     </div>	
+                 	<div class="row">
+                	 <img src="css/images/edit-png.png"  style="width:50px; height:60px; padding-top: 10%"/>
+                 		<ul>
+                 		<li> <a style="margin-left:5px">แก้ไขประกาศ</a> </li>
+                   		</ul>
+                     </div>	
+                   	<div class="row">
+                	 <img src="css/images/Trash_Can-512.png"  style="width:60px; height:60px; padding-top: 10%"/>
+                 		<ul>
+                 		<li> <a style="margin-left:5px">ลบ/ปิดการขาย</a> </li>
+                   		</ul>
+                     </div>
+                   
+                    </div>
+     			 </div>
+          </div> 
         </div>
-        <!-- Brands --><!-- End Brands -->
-        <!-- Footer -->
+        <div style="margin-left:40px;padding-top: 2%;">
+        <td>
+                <textarea name="detailpd" cols="100" rows="30"><?php echo ($result["description"]);?></textarea>
+                </td>
+        </div>
+        </div>
         <div id="footer">
           <div class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </div>
         </div>
-        <!-- End Footer -->
+        <!-- End Footer -->	
       </div>
       <!-- End Container -->
     </div>

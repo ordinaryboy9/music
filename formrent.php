@@ -76,7 +76,7 @@
           <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
-            <a href="logout.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+            <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
           </div>
         </div>
     </div>
@@ -123,7 +123,11 @@
                 <td><input type="text"  style="height: 20px; width: 200px" /></td>
               </tr>
               <tr>
-                <td height="35" align="right"><b style="margin-right: 10px"> ระบุราคาค้าบริการ </b></td>
+                <td height="35" align="right"><b style="margin-right: 10px"> ระบุราคาค้าบริการต่อวัน </b></td>
+                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+              </tr>
+              <tr>
+                <td height="35" align="right"><b style="margin-right: 10px"> ระบุราคาค้าบริการเกินกำหนดต่อวัน </b></td>
                 <td><input type="text"  style="height: 20px; width: 200px" /></td>
               </tr>
               <tr>
@@ -146,7 +150,7 @@
               </tr>
                <em> 
             </table>
-            <input type="submit" value="ลงขาย"  style="height:30px;" width="80px"/>
+            <input type="submit" value="ลงประกาศ"  style="height:30px;" width="80px"/>
            
             </center></h1>
         <p><center></center></p>

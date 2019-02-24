@@ -10,14 +10,44 @@
 <script src="js/jquery.slide.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
 <style>
+#d { float:right; white-space:nowrap;size: }
+#d ul{ list-style-type: none; padding-top:50px;}
+#d ul li{ float:left; display:inline; padding-right:8px; margin-right:8px;}
+#d ul li.last{ border-right:0; padding-right:0; margin-right:0;}
+#d ul li a{ color:#000;}
+#d ul li a:hover,
+#d ul li a.active { color:#00FF99; }
+
 .row{
-	display:-webkit-box;
-	display:-ms-flexbox;
-	display:flex;
-	-ms-flex-wrap:wrap;
-	flex-wrap:wrap;
-	margin-right:-10px;
-	margin-left:-10px
+display:-webkit-box;
+display:-ms-flexbox;
+display:flex;
+-ms-flex-wrap:wrap;
+flex-wrap:wrap;
+margin-right:-10px;
+margin-left:-10px
+}
+.card{
+ 	box-shadow:0 10px 10px 0 rgba(0,0,0,0.6);
+    transition:0.4s;
+    width:280px;
+	height:300px;
+    backgroound:#fff;
+    text-align:center;
+    font-site:16px;
+    font-family:sans-serif;
+    margin:10px	
+}
+.card1{
+ 	box-shadow:0 7px 7px 0 rgba(0,0,0,0.6);
+    transition:0.4s;
+    width:230px;
+	height:400px;
+    backgroound:#fff;
+    text-align:center;
+    font-site:16px;
+    font-family:sans-serif;
+    margin:10px	
 }
 .dropbtn {
   background-color: #FFFF66;
@@ -107,63 +137,70 @@
     <!-- End Slider -->
   </div>
 </div>
-<!-- Top -->
-<!-- Main -->
-<div id="main">
+  <?php
+			  $TypeMusic = $_GET["TypeMusic"];
+        $Search = null;
+        if(isset($_POST["txtSearch"]))
+        {
+            $Search = $_POST["txtSearch"];
+        }
+
+        include('connect.php');
+
+        $sql = "SELECT * FROM productbay WHERE namepd LIKE '%".$Search."%' AND typemusic = '$TypeMusic' ";
+        $query = mysqli_query($conn, $sql);
+		?>
+	<div id="main">
   <div class="shell">
    <!-- Search, etc -->
     <div class="options">
-      
+      <div class="search">
+        <form name="search" method="post">
+          <span class="field">
+          <input type="text" class="blink" name="txtSearch" id="txtSearch" value="<?php echo($Search); ?>" title="SEARCH" />
+          </span>
+          <input type="submit" class="search-submit" value="GO" />
+        </form>
+      </div>
       <div class="right"></div>
     </div>
-   
-    <!-- End Search, etc -->
-    <!-- Content -->
-    <div id="content"><!-- Tabs --><!-- Tabs -->
-      <!-- Container -->
+    </div>
+    </div>
+<!-- Top -->
+<!-- Main -->
+
       <div id="container">
-        <div class="tabbed" align="center" style="margin-left: 12%">
-          <div id=<div align="center" class="row">
-              <div> <a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=guitaret">
-              <img src="css/images/button.gif" width="250" height="200"  /></a>
-                  <div>
-                     <font>กีต้าร์ไฟฟ้า</font>
-                  </div>
+       
+        <div class="tabbed" align="center" >
+        
+         
+            
+			
+		<?php
+		
+	while($result = mysqli_fetch_array($query, MYSQLI_ASSOC))
+	{
+
+    ?>
+              <a href="Detailspd.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>"><div class="card">
+                <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:100%" height="200" />
+                <div class="cantainer">
+                <h4><b> <?php echo ($result["namepd"]);?> </b></h4>
+                <p><?php echo ($result["user"]);?></p>
+                <p><?php echo ($result["price"]);?></p>
+                <?php if($result["user"] === $Username):?>
+                <button type="button" 
+                onclick="window.location.href='Detailsedit.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>'"
+                >แก้ไขข้อมูล</button>
+                <?php else:?>
+                <?php endif;?>
               </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=guitar">
-                  <img src="css/images/buttonguter.gif" width="250" height="200"  /></a>
-                  <div>
-                     <font>กีต้าร์โปร่ง</font>
-                  </div>
-              </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=drum">
-                  <img src="css/images/buttondrum.gif" width="250" height="200"  />
-                  <div>
-                     <font>กลอง</font>
-                  </div>
-              </div>
-          </div>
-          <div id=<div align="center" class="row">
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=bass">
-                  <img src="css/images/buttonbass.gif" width="250" height="200"  />
-                  <div>
-                     <font>กีต้าร์เบส</font>
-                  </div>
-              </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=effects">
-                  <img src="css/images/buttoneff.gif" width="250" height="200"  />
-                  <div>
-                     <font>เอฟเฟค</font>
-                  </div>
-              </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=items">
-                  <img src="css/images/buttonnn.gif" width="250" height="200"  />
-                  <div>
-                     <font>รายการอื่นๆ</font>
-                  </div>
-              </div>
-          </div>
+          </div></a>
+           <?php
+			}
+			?>
         </div>
+        
         <!-- Brands --><!-- End Brands -->
         <!-- Footer -->
         <div id="footer">

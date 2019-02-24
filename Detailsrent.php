@@ -28,7 +28,7 @@ margin-right:-10px;
 margin-left:-10px
 }
 .card{
- 	box-shadow:0 10px 10px 0 rgba(0,0,0,0.6);
+ 	box-shadow:0 7px 7px 0 rgba(0,0,0,0.6);
     transition:0.4s;
     width:280px;
 	height:300px;
@@ -39,11 +39,11 @@ margin-left:-10px
     margin:10px	
 }
 .card1{
- 	box-shadow:0 7px 7px 0 rgba(0,0,0,0.6);
+ 	box-shadow:0 3px 3px 0 rgba(0,0,0,0.6);
     transition:0.4s;
-    width:230px;
-	height:400px;
-    backgroound:#fff;
+    width:350px;
+	height:600px;
+    background-color:#FF9;
     text-align:center;
     font-site:16px;
     font-family:sans-serif;
@@ -91,6 +91,15 @@ margin-left:-10px
 	if(isset($_GET["UserName"])){
 		$Username = $_GET["UserName"];
 	}
+	 include("connect.php");
+        $ID = null;
+        if(isset($_GET["id"])){
+            $ID = $_GET["id"];
+        }
+
+        $sql = "SELECT * FROM productbay WHERE id = '".$ID."'";
+        $query = mysqli_query($conn, $sql);
+        $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
 ?>
 <!-- Top -->
 <div id="top">
@@ -101,7 +110,7 @@ margin-left:-10px
     	<img src="css/images/logo.jpg" class="site_logoo" alt="" />
     </a>
    
-	<?php if($Username === ''):?>
+	<?php if($Username === ''):; ?>
       <div id="navigation">
         <ul>
           <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
@@ -137,35 +146,6 @@ margin-left:-10px
     <!-- End Slider -->
   </div>
 </div>
-  <?php
-			  $TypeMusic = $_GET["TypeMusic"];
-        $Search = null;
-        if(isset($_POST["txtSearch"]))
-        {
-            $Search = $_POST["txtSearch"];
-        }
-
-        include('connect.php');
-
-        $sql = "SELECT * FROM productbay WHERE namepd LIKE '%".$Search."%' AND typemusic = '$TypeMusic' ";
-        $query = mysqli_query($conn, $sql);
-		?>
-	<div id="main">
-  <div class="shell">
-   <!-- Search, etc -->
-    <div class="options">
-      <div class="search">
-        <form name="search" method="post">
-          <span class="field">
-          <input type="text" class="blink" name="txtSearch" id="txtSearch" value="<?php echo($Search); ?>" title="SEARCH" />
-          </span>
-          <input type="submit" class="search-submit" value="GO" />
-        </form>
-      </div>
-      <div class="right"></div>
-    </div>
-    </div>
-    </div>
 <!-- Top -->
 <!-- Main -->
 
@@ -173,65 +153,77 @@ margin-left:-10px
        
         <div class="tabbed" align="center" >
         
-            <div class="row">
-            <div class="card1">
-                <div style="width: 150px; margin-right: 20;" align="center">
-           			 <h1>หมวดหมู่</h1> 
-                 <div id="d" style="font-size:20px">
-                    <ul>
-                    	<li> <a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=guitaret">กีต้าร์ไฟ้า</a></li>
-                    </ul>
-                    <ul>
-                    	<li> <a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=guitar">กีต้าร์โปร่ง</a></li>
-                    </ul>
-                    <ul>
-                    	<li> <a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=drum">กลองชุด</a></li>
-                    </ul>
-               		<ul>
-                    	<li> <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=bass">เบส</a></li>
-                    </ul>
-                    <ul>
-                    	<li> <a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=effects">เอฟเฟค</a></li>
-                    </ul>
-                    <ul>
-                    	<li> <a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=items">รายการอื่นๆ</a></li>
-                    </ul>
-     			 </div>
-                </div>
-              </div>
             
-			
-		<?php
-		
-	while($result = mysqli_fetch_array($query, MYSQLI_ASSOC))
-	{
-
-    ?>
-              <a href="Detailspd.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>"><div class="card">
-                <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:100%" height="200" />
-                <div class="cantainer">
-                <h4><b> <?php echo ($result["namepd"]);?> </b></h4>
-                <p><?php echo ($result["user"]);?></p>
-                <p><?php echo ($result["price"]);?></p>
-                <?php if($result["user"] === $Username):?>
-                <button type="button" 
-                onclick="window.location.href='Detailsedit.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>'"
-                >แก้ไขข้อมูล</button>
-                <?php else:?>
-                <?php endif;?>
+              <div style="width:1300px; height:400px; background-color:#666; padding-top: 6%;" align="center">
+                <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:30%;height:300px;"  />
+                
               </div>
-          </div></a>
-           <?php
-			}
-			?>
+           	<div class="row"> 
+            <div align="left">
+            <div class="card1">
+             
+             <div style="width: 300px; margin-left: 2px;p padding-top: 9%; ">	
+             <div id="d" style="font-size:18px">
+                 	
+                    <div class="row">
+                	 <img src="css/images/user2.png"  style="width:50px; height:60px; padding-top: 9%"/>
+                 		<ul>
+                 		<li> <a style="margin-left:5px"><?php echo ($result["user"]);?></a> </li>
+                   		</ul>
+                     </div>
+                     <div class="row">
+                	 <img src="css/images/monny-png.png"  style="width:50px; height:70px; padding-top: 10%"/>
+                 		<ul>
+                 		<li> <a style="margin-left:5px"><?php echo ($result["price"]);?></a> </li>
+                   		</ul>
+                     </div>	
+                 	<div class="row">
+                	 <img src="css/images/tall.png"  style="width:50px; height:60px; padding-top: 10%"/>
+                 		<ul>
+                 		<li> <a style="margin-left:5px"><?php echo ($result["tele"]);?></a> </li>
+                   		</ul>
+                     </div>	
+                   	<div class="row">
+                	 <img src="css/images/line-png.png"  style="width:60px; height:80px; padding-top: 10%"/>
+                 		<ul>
+                 		<li> <a style="margin-left:5px"><?php echo ($result["idline"]);?></a> </li>
+                   		</ul>
+                     </div>
+                   <div class="row">
+                	 <img src="css/images/calendar.png"  style="width:60px; height:70px; padding-top: 10%"/>
+                 		<ul>
+                 		<li> 
+                        <select name="typemusic" id="typemusic" style="height: 30px; width: 80px; font-size:15px">
+                  		<option value="guitar"> 7วัน</option>
+                  		<option value="guitaret"> 15วัน</option>
+                  		<option value="bass"> 30วัน</option>
+                		</select> 
+                        </li>
+                   		</ul>
+                     </div>
+                   <div class="row">
+                	 <img src="css/images/maths.png"  style="width:60px; height:80px; padding-top: 10%"/>
+                 		<ul>
+                 		<li> <input type="text" name="namepd" style="height: 20px; width: 90px" /></a> </li>
+                   		</ul>
+                        <ul>
+                 		<li> <a> บาท </a> </li>
+                   		</ul>
+                     </div>
+                    </div>
+     			 </div>
+          </div> 
         </div>
-        
-        <!-- Brands --><!-- End Brands -->
-        <!-- Footer -->
+        <div style="margin-left:40px;padding-top: 2%;">
+        <td>
+                <textarea name="detailpd" cols="100" rows="30"><?php echo ($result["description"]);?></textarea>
+                </td>
+        </div>
+        </div>
         <div id="footer">
           <div class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </div>
         </div>
-        <!-- End Footer -->
+        <!-- End Footer -->	
       </div>
       <!-- End Container -->
     </div>

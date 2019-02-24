@@ -62,7 +62,7 @@
     	<img src="css/images/logo.jpg" class="site_logoo" alt="" />
     </a>
    
-	<?php if($Username === ''):?>
+	<?php if($Username === ''): header("location:login.php?"); ?>
       <div id="navigation">
         <ul>
           <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
@@ -112,7 +112,7 @@
       <!-- Container -->
       <div id="container">
         <div class="tabbed" align="center" style="margin-left: 12%">
-          <form id="form1" name="form1" method="post" action="InsertProduce.php" enctype="multipart/form-data" target="iframe_target">
+          <form id="form1" name="form1" method="post" action="InsertProduce.php?UserName=<?php echo $Username; ?>" enctype="multipart/form-data" target="iframe_target">
                     <iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>>
           <div class="tab-content" style="display:block;">
             <h1><center>
@@ -143,7 +143,7 @@
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> รูปภาพ </b></td>
-                <td><input type="file" name="imgpd" /></td>
+                <td><input type="file" 	name="imgpd" /></td>
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> รายละเอียดสินค้า </b></td>

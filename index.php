@@ -76,7 +76,7 @@
           <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
-            <a href="logout.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+            <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
           </div>
         </div>
     </div>

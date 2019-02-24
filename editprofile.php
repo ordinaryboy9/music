@@ -31,13 +31,7 @@ margin-left:-10px
     <div id="header">
     <a href="index.php" class="logo pull-left">
     	<img src="css/images/logo.jpg" class="site_logoo" alt="" />
-    </a>
-      <div id="navigation">
-        <ul>
-          <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
-          <li><a href="login.php">เข้าสู่ระบบ</a></li>
-        </ul>
-      </div>
+    </a>  
     </div>
   <div id="container">
         <div class="tabbed" align="center" style="margin-left: 12%">
@@ -103,7 +97,7 @@ margin-left:-10px
               <td colspan="2"><div align="center">หมายเหตุ <font color="#FF0000">*</font> หมายถึง จำเป็นต้องกรอก </div></td>
             </tr>
           </table> 
-		  <div class=".row"
+		  <div class=".row">
         	<em>
         	<input type="submit"   value="ยกเลิก"  style="margin-right:5%; margin-left:15%; width:12% ; height:5%" onClick="return CheckValidity();"/>
         	<input type="submit" name="submit" id="submit"  value="ยืนยัน" style="margin-right:30%; margin-left:2%; width:12% ; height:5%" onClick="return CheckValidity();"/>

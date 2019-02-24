@@ -1,5 +1,6 @@
 <?php
 include("connect.php");
+	$UserName = $_GET["UserName"];
 	$typemusic = $_POST["typemusic"];
     $namepd = $_POST["namepd"];
 	$pricepd = $_POST["pricepd"];
@@ -53,8 +54,8 @@ if(empty($namepd) ||
 
     }else {
        
-		$sql = "INSERT INTO productbay (typemusic, namepd, price, description, tele, idline, img) 
-			VALUES ('$typemusic', '$namepd', '$pricepd', '$detailpd', '$telpd', '$linepd', '$image')";
+		$sql = "INSERT INTO productbay (typemusic, namepd, price, description, tele, idline, img, user) 
+			VALUES ('$typemusic', '$namepd', '$pricepd', '$detailpd', '$telpd', '$linepd', '$image', '$UserName')";
 
         $query = mysqli_query($conn, $sql);
 
