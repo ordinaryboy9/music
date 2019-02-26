@@ -173,7 +173,7 @@
                     </td>
                     <td>
                         <div class="image"> 
-                        	<a href="#"><img src="css/images/Rent.png" alt="" /></a> 
+                        	<a href="pdguterent.php?UserName=<?php echo $Username; ?>"><img src="css/images/Rent.png" alt="" /></a> 
                        </div>
                     </td>
                 </tr>

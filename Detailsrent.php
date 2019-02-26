@@ -86,18 +86,18 @@ margin-left:-10px
 </head>
 <body>
  <?php 
+ include("connect.php");
 	$Username = "";
 
 	if(isset($_GET["UserName"])){
 		$Username = $_GET["UserName"];
 	}
-	 include("connect.php");
         $ID = null;
         if(isset($_GET["id"])){
             $ID = $_GET["id"];
         }
 
-        $sql = "SELECT * FROM productbay WHERE id = '".$ID."'";
+        $sql = "SELECT * FROM productrent WHERE id = '".$ID."'";
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
 ?>
@@ -110,7 +110,7 @@ margin-left:-10px
     	<img src="css/images/logo.jpg" class="site_logoo" alt="" />
     </a>
    
-	<?php if($Username === ''):; ?>
+	<?php if($Username === ''):header("location:login.php?");?>
       <div id="navigation">
         <ul>
           <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
@@ -193,10 +193,11 @@ margin-left:-10px
                 	 <img src="css/images/calendar.png"  style="width:60px; height:70px; padding-top: 10%"/>
                  		<ul>
                  		<li> 
-                        <select name="typemusic" id="typemusic" style="height: 30px; width: 80px; font-size:15px">
-                  		<option value="guitar"> 7วัน</option>
-                  		<option value="guitaret"> 15วัน</option>
-                  		<option value="bass"> 30วัน</option>
+                        <select name="typemusic" id="typemusic" style="height: 30px; width: 150px; font-size:15px" onchange="getComboA(this)">
+                        	<option value="select"> กรุณาเลือกวันเช่า</option>
+                            <option value="7"> 7วัน</option>
+                            <option value="15"> 15วัน</option>
+                            <option value="30"> 30วัน</option>
                 		</select> 
                         </li>
                    		</ul>
@@ -204,7 +205,7 @@ margin-left:-10px
                    <div class="row">
                 	 <img src="css/images/maths.png"  style="width:60px; height:80px; padding-top: 10%"/>
                  		<ul>
-                 		<li> <input type="text" name="namepd" style="height: 20px; width: 90px" /></a> </li>
+                 		<li> <input type="text" name="tetal" id="tetal" style="height: 20px; width: 90px" readonly="readonly" value="0" /></a> </li>
                    		</ul>
                         <ul>
                  		<li> <a> บาท </a> </li>
@@ -231,5 +232,23 @@ margin-left:-10px
   </div>
 </div>
 <!-- End Main -->
+<script>
+$(document).ready(function () {
+	$('#typemusic').change(function(){
+		var value = $(this).val()  
+			var totle = 0;
+			if(value === 'select'){
+				alert("กรุณาเลือกวันเช่า!");
+			}else if(value == '7'){
+				totle = 7 * 10 ;
+			}else if(value == '15'){
+				totle = 15 * 20 ;
+			}else if(value == '30'){
+				totle = 30 * 30 ;
+			}
+			$('#tetal').val(totle);
+	})
+});
+</script>
 </body>
 </html>

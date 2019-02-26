@@ -207,7 +207,8 @@ margin-left:-10px
 	{
 
     ?>
-              <a href="Detailspd.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>"><div class="card">
+              <a href="Detailspd.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>">
+              <div class="card">
                 <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:100%" height="200" />
                 <div class="cantainer">
                 <h4><b> <?php echo ($result["namepd"]);?> </b></h4>
@@ -236,7 +237,7 @@ margin-left:-10px
       <!-- End Container -->
     </div>
     <!-- End Content -->
-  </div>
+  
 </div>
 <!-- End Main -->
 </body>

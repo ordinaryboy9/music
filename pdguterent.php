@@ -138,7 +138,7 @@ margin-left:-10px
   </div>
 </div>
   <?php
-			  $TypeMusic = $_GET["TypeMusic"];
+		
         $Search = null;
         if(isset($_POST["txtSearch"]))
         {
@@ -147,7 +147,7 @@ margin-left:-10px
 
         include('connect.php');
 
-        $sql = "SELECT * FROM productbay WHERE namepd LIKE '%".$Search."%' AND typemusic = '$TypeMusic' ";
+        $sql = "SELECT * FROM productrent WHERE namepd LIKE '%".$Search."%'";
         $query = mysqli_query($conn, $sql);
 		?>
 	<div id="main">
@@ -174,7 +174,7 @@ margin-left:-10px
         <div class="tabbed" align="center" >
         
          
-            
+            <div class="row">
 			
 		<?php
 		
@@ -182,25 +182,21 @@ margin-left:-10px
 	{
 
     ?>
-              <a href="Detailspd.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>"><div class="card">
+              <a href="Detailsrent.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>">
+             
+              <div class="card"> 
                 <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:100%" height="200" />
-                <div class="cantainer">
+                
                 <h4><b> <?php echo ($result["namepd"]);?> </b></h4>
                 <p><?php echo ($result["user"]);?></p>
                 <p><?php echo ($result["price"]);?></p>
-                <?php if($result["user"] === $Username):?>
-                <button type="button" 
-                onclick="window.location.href='Detailsedit.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>'"
-                >แก้ไขข้อมูล</button>
-                <?php else:?>
-                <?php endif;?>
-              </div>
+
           </div></a>
            <?php
 			}
 			?>
+             </div>
         </div>
-        
         <!-- Brands --><!-- End Brands -->
         <!-- Footer -->
         <div id="footer">

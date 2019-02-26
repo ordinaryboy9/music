@@ -62,7 +62,7 @@
     	<img src="css/images/logo.jpg" class="site_logoo" alt="" />
     </a>
    
-	<?php if($Username === ''):?>
+	<?php if($Username === ''):header("location:login.php?");?>
       <div id="navigation">
         <ul>
           <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
@@ -112,7 +112,7 @@
       <!-- Container -->
       <div id="container">
         <div class="tabbed" align="center" style="margin-left: 12%">
-          <form id="form1" name="form1" method="post" action="">
+          <form id="form1" name="form1" method="post" action="Insertrent.php?UserName=<?php echo $Username; ?>" enctype="multipart/form-data">
           <div class="tab-content" style="display:block;">
             <h1><center>
             ลงเช่าสินค้า
@@ -120,33 +120,30 @@
              
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> ชื่อสินค้าที่คุณต้องการลงเช่า </b></td>
-                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+                <td><input type="text" name="namepd"  style="height: 20px; width: 200px" required /></td>
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> ระบุราคาค้าบริการต่อวัน </b></td>
-                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+                <td><input type="text" name="price"  style="height: 20px; width: 200px" required/></td>
               </tr>
-              <tr>
-                <td height="35" align="right"><b style="margin-right: 10px"> ระบุราคาค้าบริการเกินกำหนดต่อวัน </b></td>
-                <td><input type="text"  style="height: 20px; width: 200px" /></td>
-              </tr>
+              
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> รูปภาพ </b></td>
-                <td><input type="file" /></td>
+                <td><input type="file" name="img" required /></td>
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> รายละเอียดสินค้า </b></td>
                 <td>
-                <textarea name="" cols="40" rows="6"></textarea>
+                <textarea name="description" cols="40" rows="6" required;></textarea>
                 </td>
               </tr>
                <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> เบอร์โทรติดต่อ </b></td>
-                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+                <td><input type="text" name="tele"  style="height: 20px; width: 200px"required /></td>
               </tr>
                <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> IDline </b></td>
-                <td><input type="text"  style="height: 20px; width: 200px" /></td>
+                <td><input type="text" name="idline" style="height: 20px; width: 200px" required/></td>
               </tr>
                <em> 
             </table>
