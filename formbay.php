@@ -2,13 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Music</title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset="utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 <!--[if lte IE 6]><style type="text/css" media="screen">.tabbed { height:420px; }</style><![endif]-->
 <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
 <script src="js/jquery.jcarousel.pack.js" type="text/javascript"></script>
 <script src="js/jquery.slide.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<script src="js/jquery.thprovinceset.1.0.js"></script>
+ 
+
 <style>
 .dropbtn {
   background-color: #FFFF66;
@@ -54,6 +58,7 @@
 	}
 ?>
 <!-- Top -->
+<iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
 <div id="top">
   <div class="shell">
     <!-- Header -->
@@ -112,12 +117,11 @@
       <!-- Container -->
       <div id="container">
         <div class="tabbed" align="center" style="margin-left: 12%">
-          <form id="form1" name="form1" method="post" action="InsertProduce.php?UserName=<?php echo $Username; ?>" enctype="multipart/form-data" target="iframe_target">
-                    <iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>>
+          <form id="form1" name="form1" method="post" action="InsertProduce.php?UserName=<?php echo $Username; ?>" enctype="multipart/form-data" target="iframe_target"> 
           <div class="tab-content" style="display:block;">
             <h1><center>
             ลงขายสินค้า
-                <table width="68%" border="0" style="font-size:18px; margin-top:30px" >
+                <table width="80%" border="0" style="font-size:18px; margin-top:30px" >
               <tr>
                 <td 
                 height="35" align="right"><b style="margin-right: 10px"> เลือกหมวดหมู่ให้ตรงกับสินค้า </b>
@@ -143,7 +147,19 @@
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> รูปภาพ </b></td>
-                <td><input type="file" 	name="imgpd" /></td>
+                <td><input type="file" name="imgpd" style="font-size:18px;"/></td>
+              </tr>
+              <tr>
+                  <td height="35" align="right"><p style="margin-right: 10px">จังหวัด</p></td>
+                  <td><select id="xprovince" style="height: 20px; width: 200px"></select></td>
+              </tr>
+              <tr>
+              		<td height="35" align="right"><p style="margin-right: 10px">เขต/อำเภอ</p></td>
+                  <td><select id="xdistrict" style="height: 20px; width: 200px"></select></td>
+              </tr>
+              <tr>
+              	<td height="35" align="right"><p style="margin-right: 10px">แขวง/ตำบล</p></td>
+                  <td><select id="xsubdistrict" style="height: 20px; width: 200px"></select></td>
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> รายละเอียดสินค้า </b></td>
@@ -156,18 +172,18 @@
                 <td><input type="text" name="telpd" style="height: 20px; width: 200px" /></td>
               </tr>
                <tr>
-                <td height="35" align="right"><b style="margin-right: 10px"> IDline </b></td>
+                <td height="35" align="right"><b style="margin-right: 10px"> LineID </b></td>
                 <td><input type="text" name="linepd" style="height: 20px; width: 200px" /></td>
               </tr>
                <em> 
             </table>
-            <input type="submit" value="ลงขาย"  style="height:30px;" width="80px"/>
+            <input type="submit" value="ลงขาย"  style="height:30px; width:80px;font-size:18px;"/>
            
             </center></h1>
-        <p><center></center></p>
+            </div>
           </form>
-        </div>
-        <!-- Brands --><!-- End Brands -->
+             
+           <!-- Brands --><!-- End Brands -->
         <!-- Footer -->
         <div id="footer">
           <div class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </div>
@@ -180,5 +196,19 @@
   </div>
 </div>
 <!-- End Main -->
+<script>
+$(function(){
+ 
+	$.thprovinceset({
+		eProvinceID: "#xprovince",
+		eDistrictID: "#xdistrict",
+		eSubDistrictID: "#xsubdistrict",
+		SelectProvince : "10", /*10 = กรุงเทพฯ*/
+		SelectDistrict: "",
+		SelectSubDistrict: "",
+	});
+ 
+});
+ </script>
 </body>
 </html>

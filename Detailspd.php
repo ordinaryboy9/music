@@ -42,7 +42,18 @@ margin-left:-10px
  	box-shadow:0 3px 3px 0 rgba(0,0,0,0.6);
     transition:0.4s;
     width:350px;
-	height:350px;
+	height:380px;
+    background-color:#FF9;
+    text-align:center;
+    font-site:16px;
+    font-family:sans-serif;
+    margin:10px	
+}
+.card2{
+ 	box-shadow:0 3px 3px 0 rgba(0,0,0,0.6);
+    transition:0.4s;
+    width:650px;
+	height:100px;
     background-color:#FF9;
     text-align:center;
     font-site:16px;
@@ -152,8 +163,7 @@ margin-left:-10px
       <div id="container">
        
         <div class="tabbed" align="center" >
-        
-            
+ 
               <div style="width:1300px; height:400px; background-color:#666; padding-top: 6%;" align="center">
                 <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:30%;height:300px;"  />
                 
@@ -161,7 +171,7 @@ margin-left:-10px
            	<div class="row"> 
             <div align="left">
             <div class="card1">
-             
+             <iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
              <div style="width: 200px; margin-left: 1px;p padding-top: 9%; ">	
              <div id="d" style="font-size:18px">
                  	
@@ -189,17 +199,99 @@ margin-left:-10px
                  		<li> <a style="margin-left:5px"><?php echo ($result["idline"]);?></a> </li>
                    		</ul>
                      </div>
-                   
-                    </div>
-     			 </div>
+                     
+             </div>
+     		</div>
           </div> 
         </div>
-        <div style="margin-left:40px;padding-top: 2%;">
-        <td>
-                <textarea name="detailpd" cols="100" rows="30"><?php echo ($result["description"]);?></textarea>
+        <div style="margin-left:40px;padding-top: 2%;"> 
+        		       
+       				
+        		<td>
+                <textarea name="detailpd" cols="100" rows="20"><?php echo ($result["description"]);?></textarea>
                 </td>
+               <div class="card2">
+              		 <div class="row">
+                	 <img src="css/images/line-png.png" style="width:10%; height:20%"/>
+                 		<ul>
+                 		 <a >fdsd</a> 
+                   		</ul>
+                     </div>
+                     	
+               
         </div>
         </div>
+        </div>
+         <?php
+
+        $sql = "SELECT * FROM arComments order by datetime asc";
+        $query = mysqli_query($conn, $sql);
+		$nameHead;
+		$datetime;
+        while($result = mysqli_fetch_array($query, MYSQLI_ASSOC))
+			{ 
+			$nameHead = $result["name"];
+			$datetime = $result["datetime"];
+			$sqluser = "SELECT * FROM commentuser WHERE nameHead = '$nameHead' AND datetimeuser = '$datetime' order by datetime asc";
+        	$queryuser = mysqli_query($conn, $sqluser);
+		?>
+			<div style="border: 2px solid black; margin-top: 1%; width:80%; padding: 10px;text-align:center;" id="auto">
+            	<b><?php echo ($result["name"]) ?> </b>
+                <p><?php echo ($result["datetime"]) ?> </p>
+                <textarea rows="5" style="width: 100%; resize:none;" readonly><?php echo ($result["Datile"]) ?></textarea>
+           <?php
+        	while($resultuser = mysqli_fetch_array($queryuser, MYSQLI_ASSOC))
+			{ 
+		?>
+			<div style="border: 2px solid black; margin-top: 1%; width:80%; padding: 10px;text-align:center;" id="auto">
+            	<b><?php echo ($resultuser["name"]) ?> </b>
+                <p><?php echo ($resultuser["datetime"]) ?> </p>
+                <textarea rows="5" style="width: 100%; resize:none;" readonly><?php echo ($resultuser["Datile"]) ?></textarea>
+            </div>
+		<?php
+			}
+		?>
+          <div style="margin-top: 1%; margin-bottom: 1%">
+            <form name="commentUserForm" method="post" action="InsertCommentUser.php" target="iframe_target">
+                <div style="width: 100%; display:inline-block; position:relative; text-align: left;">
+                    <font class="font-16">แสดงความคิดเห็น :</font>
+                    <input type="hidden" name="AR_Date" value="<?php echo date('Y-m-d H:i:s');?>"/>
+                    <input type="hidden" name="AR_UserName" value="<?php echo $Username;?>"/>
+                    <input type="hidden" name="AR_nameHead" value="<?php echo $nameHead;?>"/>
+                    <input type="hidden" name="AR_datetimeuser" value="<?php echo $datetime;?>"/>
+                    <textarea name="AR_Datile" cols="20" rows="7" style="width: 100%; display:block;"></textarea>
+                    <button 
+                    style="position:absolute; bottom:10px; right:20px; color: white; background: #068e81;" 
+                    type="submit"
+                    onclick="FunReload()"
+                    >
+                    ยืนยัน
+                    </button>
+                </div>
+            </form>
+          </div>
+         </div>
+		<?php
+			}
+		?>
+          <div style="margin-top: 1%; margin-bottom: 1%">
+            <form name="commentForm" method="post" action="InsertMessage.php" target="iframe_target">
+            <iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
+                <div style="width: 50%; display:inline-block; position:relative; text-align: center;">
+                    <font class="font-16">แสดงความคิดเห็น :</font>
+                    <input type="hidden" name="AR_Date" value="<?php echo date('Y-m-d H:i:s');?>"/>
+                    <input type="hidden" name="AR_UserName" value="<?php echo $Username;?>"/>
+                    <textarea name="AR_Datile" cols="20" rows="7" style="width: 100%; display:block;"></textarea>
+                    <button 
+                    style="position:absolute; bottom:10px; right:20px; color: white; background: #068e81;" 
+                    type="submit"
+                    onclick="FunReload()"
+                    >
+                    ยืนยัน
+                    </button>
+                </div>
+            </form>
+            </div>
         <div id="footer">
           <div class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </div>
         </div>
@@ -211,5 +303,10 @@ margin-left:-10px
   </div>
 </div>
 <!-- End Main -->
+ <script>
+function FunReload() {
+	window.location.reload(true);
+}
+</script>
 </body>
 </html>

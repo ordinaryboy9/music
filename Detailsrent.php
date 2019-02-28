@@ -240,11 +240,11 @@ $(document).ready(function () {
 			if(value === 'select'){
 				alert("กรุณาเลือกวันเช่า!");
 			}else if(value == '7'){
-				totle = 7 * 10 ;
+				totle = 7 * <?php echo ($result["price"]);?> ;
 			}else if(value == '15'){
-				totle = 15 * 20 ;
+				totle = 15 * <?php echo ($result["price"]);?> ;
 			}else if(value == '30'){
-				totle = 30 * 30 ;
+				totle = 30 * <?php echo ($result["price"]);?> ;
 			}
 			$('#tetal').val(totle);
 	})

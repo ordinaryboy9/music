@@ -207,21 +207,31 @@ margin-left:-10px
 	{
 
     ?>
-              <a href="Detailspd.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>">
-              <div class="card">
+     			<?php if($result["user"] === $Username):?>
+                <div class="card">
                 <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:100%" height="200" />
-                <div class="cantainer">
-                <h4><b> <?php echo ($result["namepd"]);?> </b></h4>
-                <p><?php echo ($result["user"]);?></p>
-                <p><?php echo ($result["price"]);?></p>
-                <?php if($result["user"] === $Username):?>
-                <button type="button" 
+                    <div class="cantainer">
+                        <h4><b> <?php echo ($result["namepd"]);?> </b></h4>
+                        <p><?php echo ($result["user"]);?></p>
+                        <p><?php echo ($result["price"]);?></p>
+                    </div>
+                    <button type="button" 
                 onclick="window.location.href='Detailsedit.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>'"
                 >แก้ไขข้อมูล</button>
+          		</div>
+                
                 <?php else:?>
+                <a href="Detailspd.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>">
+               <div class="card">
+                <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:100%" height="200" />
+                    <div class="cantainer">
+                        <h4><b> <?php echo ($result["namepd"]);?> </b></h4>
+                        <p><?php echo ($result["user"]);?></p>
+                        <p><?php echo ($result["price"]);?></p>
+                    </div>
+          		</div>
+              </a>
                 <?php endif;?>
-              </div>
-          </div></a>
            <?php
 			}
 			?>
