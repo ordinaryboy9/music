@@ -165,6 +165,15 @@
                 <td height="35" align="right"><b style="margin-right: 10px"> LineID </b></td>
                 <td><input type="text" name="idline" style="height: 20px; width: 200px" required/></td>
               </tr>
+                   <td 
+                height="35" align="right"><b style="margin-right: 10px"> ค่าสถานะ </b>
+                </td>
+                <td>
+                <select name="typemusic" id="typemusic" style="height: 30px; width: 200px; font-size:15px">
+                  <option value="guitar"> ว่าง</option>
+                  <option value="guitaret"> ไม่ว่าง</option> 
+                </select>
+                </td>
                <em> 
             </table>
             <input type="submit" value="ลงประกาศ"  style="height:30px;" width="80px"/>

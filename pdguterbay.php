@@ -209,7 +209,9 @@ margin-left:-10px
     ?>
      			<?php if($result["user"] === $Username):?>
                 <div class="card">
-                <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:100%" height="200" />
+                <a href="Detailspd.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>">
+                	<img src="<?php echo ($result["img"]);?>" alt="messi" style="width:100%" height="200" />
+                </a>
                     <div class="cantainer">
                         <h4><b> <?php echo ($result["namepd"]);?> </b></h4>
                         <p><?php echo ($result["user"]);?></p>

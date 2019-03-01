@@ -151,15 +151,19 @@
               </tr>
               <tr>
                   <td height="35" align="right"><p style="margin-right: 10px">จังหวัด</p></td>
-                  <td><select id="xprovince" style="height: 20px; width: 200px"></select></td>
+                  <td><select id="xprovince" name="xprovince" style="height: 20px; width: 200px" ></select>
+                  <input type="hidden" id="provinces" name="provinces"></td>
+                 
               </tr>
               <tr>
               		<td height="35" align="right"><p style="margin-right: 10px">เขต/อำเภอ</p></td>
-                  <td><select id="xdistrict" style="height: 20px; width: 200px"></select></td>
+                  <td><select id="xdistrict" name="xdistrict" style="height: 20px; width: 200px"></select></td>
+                  
               </tr>
               <tr>
               	<td height="35" align="right"><p style="margin-right: 10px">แขวง/ตำบล</p></td>
-                  <td><select id="xsubdistrict" style="height: 20px; width: 200px"></select></td>
+                  <td><select id="xsubdistrict" name="xsubdistrict" style="height: 20px; width: 200px"></select></td>
+                  
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> รายละเอียดสินค้า </b></td>
@@ -205,10 +209,18 @@ $(function(){
 		eSubDistrictID: "#xsubdistrict",
 		SelectProvince : "10", /*10 = กรุงเทพฯ*/
 		SelectDistrict: "",
-		SelectSubDistrict: "",
+		SelectSubDistrict: ""
+
 	});
- 
+el = document.getElementById('xprovince')
+selectedText = el.options[el.selectedIndex].text
+document.getElementById('provinces').value = selectedText ;
 });
+    $('#xprovince').on('change', function() {
+        el = document.getElementById('xprovince')
+        selectedText = el.options[el.selectedIndex].text
+        document.getElementById('provinces').value = selectedText ;
+    });
  </script>
 </body>
 </html>

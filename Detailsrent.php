@@ -216,8 +216,14 @@ margin-left:-10px
           </div> 
         </div>
         <div style="margin-left:40px;padding-top: 2%;">
-        <td>
-                <textarea name="detailpd" cols="100" rows="30"><?php echo ($result["description"]);?></textarea>
+        		<td>
+                                <textarea name="detailpd" cols="100" rows="20">จังหวัด <?php echo ($result["province"]);?>   เขต <?php echo ($result["area"]);?>  แขวง <?php echo ($result["district"]);?>
+                                
+                                
+                                 
+รายละเอียด   <?php echo ($result["description"]);?>
+                </textarea>
+
                 </td>
         </div>
         </div>

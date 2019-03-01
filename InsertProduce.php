@@ -7,7 +7,9 @@ include("connect.php");
     $detailpd = $_POST["detailpd"];
     $telpd = $_POST["telpd"];
     $linepd = $_POST["linepd"];
-
+	$xprovince = $_POST["provinces"];
+	$xdistrict = $_POST["xdistrict"];
+	$xsubdistrict = $_POST["xsubdistrict"];
 
 	$target_dir = "uploads";
 	$image =$target_dir.'/'.$_FILES["imgpd"]["name"];
@@ -54,8 +56,8 @@ if(empty($namepd) ||
 
     }else {
        
-		$sql = "INSERT INTO productbay (typemusic, namepd, price, description, tele, idline, img, user) 
-			VALUES ('$typemusic', '$namepd', '$pricepd', '$detailpd', '$telpd', '$linepd', '$image', '$UserName')";
+		$sql = "INSERT INTO productbay (typemusic, namepd, price, description, tele, idline, img, user, province, area, district) 
+			VALUES ('$typemusic', '$namepd', '$pricepd', '$detailpd', '$telpd', '$linepd', '$image', '$UserName','$xprovince','$xdistrict','$xsubdistrict')";
 
         $query = mysqli_query($conn, $sql);
 

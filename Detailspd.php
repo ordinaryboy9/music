@@ -41,7 +41,7 @@ margin-left:-10px
 .card1{
  	box-shadow:0 3px 3px 0 rgba(0,0,0,0.6);
     transition:0.4s;
-    width:350px;
+    width:400px;
 	height:380px;
     background-color:#FF9;
     text-align:center;
@@ -49,17 +49,7 @@ margin-left:-10px
     font-family:sans-serif;
     margin:10px	
 }
-.card2{
- 	box-shadow:0 3px 3px 0 rgba(0,0,0,0.6);
-    transition:0.4s;
-    width:650px;
-	height:100px;
-    background-color:#FF9;
-    text-align:center;
-    font-site:16px;
-    font-family:sans-serif;
-    margin:10px	
-}
+
 .dropbtn {
   background-color: #FFFF66;
   color: white;
@@ -159,6 +149,12 @@ margin-left:-10px
 </div>
 <!-- Top -->
 <!-- Main -->
+<div id="main">
+  <div class="shell">
+   <!-- Search, etc -->
+    <div class="options">
+    </div>
+    </div>
 
       <div id="container">
        
@@ -198,28 +194,19 @@ margin-left:-10px
                  		<ul>
                  		<li> <a style="margin-left:5px"><?php echo ($result["idline"]);?></a> </li>
                    		</ul>
-                     </div>
-                     
+                     </div>    
              </div>
      		</div>
           </div> 
         </div>
-        <div style="margin-left:40px;padding-top: 2%;"> 
-        		       
-       				
+        <div style="margin-left:40px;padding-top: 2%;"> 	
         		<td>
-                <textarea name="detailpd" cols="100" rows="20"><?php echo ($result["description"]);?></textarea>
-                </td>
-               <div class="card2">
-              		 <div class="row">
-                	 <img src="css/images/line-png.png" style="width:10%; height:20%"/>
-                 		<ul>
-                 		 <a >fdsd</a> 
-                   		</ul>
-                     </div>
-                     	
-               
-        </div>
+                <textarea name="detailpd" cols="100" rows="20">จังหวัด <?php echo ($result["province"]);?>   เขต <?php echo ($result["area"]);?>  แขวง <?php echo ($result["district"]);?> 
+                
+                
+รายละเอียด   <?php echo ($result["description"]);?>
+                </textarea>
+                </td> 
         </div>
         </div>
          <?php
@@ -304,6 +291,7 @@ margin-left:-10px
 </div>
 <!-- End Main -->
  <script>
+
 function FunReload() {
 	window.location.reload(true);
 }

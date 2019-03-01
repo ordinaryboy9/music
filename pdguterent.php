@@ -190,7 +190,11 @@ margin-left:-10px
                 <h4><b> <?php echo ($result["namepd"]);?> </b></h4>
                 <p><?php echo ($result["user"]);?></p>
                 <p><?php echo ($result["price"]);?></p>
-
+				<p>สถานะ </p>
+                    <button type="button" 
+                onclick="window.location.href='Detailsedit.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>'"
+                >แก้ไขข้อมูล</button>
+          		
           </div></a>
            <?php
 			}
