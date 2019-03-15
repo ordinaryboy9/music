@@ -42,7 +42,7 @@
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> PASSWORD </b></td>
-                <td><input type="text" name="password" style="height: 20px; width: 200px" /></td>
+                <td><input type="password" name="password" style="height: 20px; width: 200px" /></td>
               </tr>  
                <em> 
             </table>

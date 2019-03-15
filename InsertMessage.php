@@ -1,6 +1,7 @@
 <?php
 include("connect.php");
 	$AR_Date = $_POST["AR_Date"];
+	$AR_Namepd = $_POST["AR_Namepd"];
     $AR_UserName = $_POST["AR_UserName"];
 	$AR_Datile = $_POST["AR_Datile"];
 
@@ -13,8 +14,8 @@ if(empty($AR_Datile)) {
     );
 }else{
    
-        $sql = "INSERT INTO arcomments (name, Datile, datetime) 
-			VALUES ('$AR_UserName', '$AR_Datile', '$AR_Date')";
+        $sql = "INSERT INTO arcomments (name, Datile, datetime, namepd) 
+			VALUES ('$AR_UserName', '$AR_Datile', '$AR_Date', '$AR_Namepd')";
 
         $query = mysqli_query($conn, $sql);
 

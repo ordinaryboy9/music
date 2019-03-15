@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="index.php" server="C:/xampp/htdocs/Music/" local="131956794851110843" remote="131956794850000000" Dst="0" />
-<file name="category.php" server="C:/xampp/htdocs/Music/" local="131955157303844293" remote="131955157300000000" Dst="0" />
-<file name="formbay.php" server="C:/xampp/htdocs/Music/" local="131959544221618947" remote="131959544220000000" Dst="0" />
-<file name="pdguterbay.php" server="C:/xampp/htdocs/Music/" local="131959275098256969" remote="131959275090000000" Dst="0" />
+<file name="index.php" server="C:/xampp/htdocs/Music/" local="131971576828868070" remote="131971576820000000" Dst="0" />
+<file name="category.php" server="C:/xampp/htdocs/Music/" local="131970728486053930" remote="131970728480000000" Dst="0" />
+<file name="formbay.php" server="C:/xampp/htdocs/Music/" local="131970727732793633" remote="131970727730000000" Dst="0" />
+<file name="pdguterbay.php" server="C:/xampp/htdocs/Music/" local="131970728882248681" remote="131970728880000000" Dst="0" />
 <file name="formrg.php" server="C:/xampp/htdocs/Music/" local="131951528156745966" remote="131951528150000000" Dst="0" />
 <file name="InsertRegister.php" server="C:/xampp/htdocs/Music/" local="131950734789043874" remote="131950734780000000" Dst="0" />
 <file name="connect.php" server="C:/xampp/htdocs/Music/" local="131950721323599002" remote="131950721320000000" Dst="0" />
 <file name="Check_login.php" server="C:/xampp/htdocs/Music/" local="131950760611744386" remote="131950760610000000" Dst="0" />
-<file name="login.php" server="C:/xampp/htdocs/Music/" local="131950760727800301" remote="131950760720000000" Dst="0" />
-<file name="index.html" server="C:/xampp/htdocs/Music/" local="131950763613497664" remote="131950763610000000" Dst="0" />
-<file name="formrent.php" server="C:/xampp/htdocs/Music/" local="131959518218102829" remote="131959518210000000" Dst="0" />
-<file name="InsertProduce.php" server="C:/xampp/htdocs/Music/" local="131959449595303379" remote="131959449590000000" Dst="0" />
-<file name="editprofile.php" server="C:/xampp/htdocs/Music/" local="131954129679604766" remote="131954129670000000" Dst="0" />
-<file name="Detailspd.php" server="C:/xampp/htdocs/Music/" local="131959514025659657" remote="131959514020000000" Dst="0" />
-<file name="Detailsedit.php" server="C:/xampp/htdocs/Music/" local="131955088529490834" remote="131955088520000000" Dst="0" />
-<file name="Insertrent.php" server="C:/xampp/htdocs/Music/" local="131959512293559846" remote="131959512290000000" Dst="0" />
-<file name="pdguterent.php" server="C:/xampp/htdocs/Music/" local="131959537253250334" remote="131959537250000000" Dst="0" />
-<file name="Detailsrent.php" server="C:/xampp/htdocs/Music/" local="131959514639288326" remote="131959514630000000" Dst="0" />
-<file name="InsertMessage.php" server="C:/xampp/htdocs/Music/" local="131958597564658137" remote="131958597560000000" Dst="0" />
-<file name="InsertCommentUser.php" server="C:/xampp/htdocs/Music/" local="131958597688929672" remote="131958597680000000" Dst="0" />
-<file name="formrentED.php" server="C:/xampp/htdocs/Music/" local="131959544479230788" remote="131959544470000000" Dst="0" />
+<file name="login.php" server="C:/xampp/htdocs/Music/" local="131970730755887283" remote="131970730750000000" Dst="0" />
+<file name="formrent.php" server="C:/xampp/htdocs/Music/" local="131970728085022713" remote="131970728080000000" Dst="0" />
+<file name="InsertProduce.php" server="C:/xampp/htdocs/Music/" local="131970691440033960" remote="131970691440000000" Dst="0" />
+<file name="editprofile.php" server="C:/xampp/htdocs/Music/" local="131970696472348603" remote="131970696470000000" Dst="0" />
+<file name="Detailspd.php" server="C:/xampp/htdocs/Music/" local="131970729595641708" remote="131970729590000000" Dst="0" />
+<file name="Detailsedit.php" server="C:/xampp/htdocs/Music/" local="131970729430775765" remote="131970729430000000" Dst="0" />
+<file name="Insertrent.php" server="C:/xampp/htdocs/Music/" local="131970694048005120" remote="131970694040000000" Dst="0" />
+<file name="pdguterent.php" server="C:/xampp/htdocs/Music/" local="131971536964554452" remote="131971536960000000" Dst="0" />
+<file name="Detailsrent.php" server="C:/xampp/htdocs/Music/" local="131970729810279252" remote="131970729810000000" Dst="0" />
+<file name="InsertMessage.php" server="C:/xampp/htdocs/Music/" local="131970607369213678" remote="131970607360000000" Dst="0" />
+<file name="InsertCommentUser.php" server="C:/xampp/htdocs/Music/" local="131970607793831367" remote="131970607790000000" Dst="0" />
+<file name="formrentED.php" server="C:/xampp/htdocs/Music/" local="131971560409214193" remote="131971560400000000" Dst="0" />
+<file name="Update_Profile.php" server="C:/xampp/htdocs/Music/" local="131970628542753066" remote="131970628540000000" Dst="0" />
+<file name="deletepd.php" server="C:/xampp/htdocs/Music/" local="131970722647917991" remote="131970722640000000" Dst="0" />
+<file name="Update_Produce.php" server="C:/xampp/htdocs/Music/" local="131971560838568354" remote="131971560830000000" Dst="0" />
+<file name="Detailsrentedit.php" server="C:/xampp/htdocs/Music/" local="131971540155727311" remote="131971540150000000" Dst="0" />
+<file name="deleterent.php" server="C:/xampp/htdocs/Music/" local="131971541505284663" remote="131971541500000000" Dst="0" />
+<file name="formbayedit.php" server="C:/xampp/htdocs/Music/" local="131971555942285282" remote="131971555940000000" Dst="0" />
+<file name="Update_Rent.php" server="C:/xampp/htdocs/Music/" local="131971560660920071" remote="131971560660000000" Dst="0" />
 </dwsync>

@@ -115,8 +115,7 @@ margin-left:-10px
           <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
-            <a href="logout.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
-          </div>
+  <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>          </div>
         </div>
     </div>
       <?php endif;?>
@@ -182,20 +181,35 @@ margin-left:-10px
 	{
 
     ?>
-              <a href="Detailsrent.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>">
-             
+    	<?php if($result["user"] === $Username):?>	
+              
               <div class="card"> 
+              <a href="Detailsrent.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>">
                 <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:100%" height="200" />
-                
+                </a>
                 <h4><b> <?php echo ($result["namepd"]);?> </b></h4>
                 <p><?php echo ($result["user"]);?></p>
                 <p><?php echo ($result["price"]);?></p>
 				<p>สถานะ </p>
                     <button type="button" 
-                onclick="window.location.href='Detailsedit.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>'"
+                onclick="window.location.href='Detailsrentedit.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>'"
                 >แก้ไขข้อมูล</button>
           		
-          </div></a>
+          </div>
+          <?php else:?>
+          <a href="Detailsrent.php?UserName=<?php echo $Username; ?>&id=<?php echo ($result["id"]);?>">
+           <div class="card"> 
+         
+                <img src="<?php echo ($result["img"]);?>" alt="messi" style="width:100%" height="200" />
+               
+                <h4><b> <?php echo ($result["namepd"]);?> </b></h4>
+                <p><?php echo ($result["user"]);?></p>
+                <p><?php echo ($result["price"]);?></p>
+				<p>สถานะ </p>
+                
+          </div>
+          </a>
+           <?php endif;?>
            <?php
 			}
 			?>
@@ -204,7 +218,7 @@ margin-left:-10px
         <!-- Brands --><!-- End Brands -->
         <!-- Footer -->
         <div id="footer">
-          <div class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </div>
+          <div class="left"></div>
         </div>
         <!-- End Footer -->
       </div>

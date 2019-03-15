@@ -23,12 +23,14 @@
 }
 
 .dropdown-content {
-  display: none;
+ display: none;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  right:0;
+  left:auto;
 }
 
 .dropdown-content a {
@@ -159,7 +161,7 @@
                       <p> เลือกซื้อเครื่องดนตรี
                         <br />
                           เลือกหาเครื่องดนตรีได้ตลอดเวลา<span></span><br />
-                        </p>
+                      </p>
                        	<p class="price">&nbsp;</p>
                       </li>
                     </td>
@@ -183,7 +185,6 @@
         <!-- Brands --><!-- End Brands -->
         <!-- Footer -->
         <div id="footer">
-          <div class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </div>
           <div class="right"></div>
         </div>
         <!-- End Footer -->

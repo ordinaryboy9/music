@@ -3,6 +3,7 @@ include("connect.php");
 	$AR_nameHead = $_POST["AR_nameHead"];
 	$AR_Date = $_POST["AR_Date"];
 	$AR_datetimeuser = $_POST["AR_datetimeuser"];
+	$AR_Namepd = $_POST["AR_Namepd"];
     $AR_UserName = $_POST["AR_UserName"];
 	$AR_Datile = $_POST["AR_Datile"];
 
@@ -15,8 +16,8 @@ if(empty($AR_Datile)) {
     );
 }else{
    
-        $sql = "INSERT INTO commentuser (nameHead, name, Datile, datetime, datetimeuser) 
-			VALUES ('$AR_nameHead', '$AR_UserName', '$AR_Datile', '$AR_Date', '$AR_datetimeuser')";
+        $sql = "INSERT INTO commentuser (nameHead, name, Datile, datetime, datetimeuser, namepd) 
+			VALUES ('$AR_nameHead', '$AR_UserName', '$AR_Datile', '$AR_Date', '$AR_datetimeuser', '$AR_Namepd')";
 
         $query = mysqli_query($conn, $sql);
 

@@ -115,8 +115,7 @@ margin-left:-10px
           <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
-            <a href="logout.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
-          </div>
+  <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>          </div>
         </div>
     </div>
       <?php endif;?>
@@ -182,13 +181,14 @@ margin-left:-10px
                  	<div class="row">
                 	 <img src="css/images/edit-png.png"  style="width:50px; height:60px; padding-top: 10%"/>
                  		<ul>
-                 		<li> <a style="margin-left:5px">แก้ไขประกาศ</a> </li>
+                 		<li> <a style="margin-left:5px" href="formbayedit.php?UserName=<?php echo $Username; ?>&ID=<?php echo ($result["id"]);?>">แก้ไขประกาศ</a> </li>
                    		</ul>
                      </div>	
                    	<div class="row">
                 	 <img src="css/images/Trash_Can-512.png"  style="width:60px; height:60px; padding-top: 10%"/>
                  		<ul>
-                 		<li> <a style="margin-left:5px">ลบ/ปิดการขาย</a> </li>
+                 		<li> <a href="JavaScript:if(confirm('ต้องการลบสินค้าใช่ไหม?')==true)
+                {window.location='deletepd.php?UserName=<?php echo $Username; ?>&ID=<?php echo ($result["id"]);?>&TypeMusic=<?php echo ($result["typemusic"]);?>';}" style="margin-left:5px" >ลบ/ปิดการขาย</a> </li>
                    		</ul>
                      </div>
                    
@@ -198,7 +198,7 @@ margin-left:-10px
         </div>
         <div style="margin-left:40px;padding-top: 2%;">
         <td>
-                <textarea name="detailpd" cols="100" rows="30"><?php echo ($result["description"]);?></textarea>
+                <textarea name="detailpd" cols="100" rows="30" readonly="readonly"><?php echo ($result["description"]);?></textarea>
                 </td>
         </div>
         </div>

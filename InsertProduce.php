@@ -8,6 +8,7 @@ include("connect.php");
     $telpd = $_POST["telpd"];
     $linepd = $_POST["linepd"];
 	$xprovince = $_POST["provinces"];
+	$provinceInt = $_POST["xprovince"];
 	$xdistrict = $_POST["xdistrict"];
 	$xsubdistrict = $_POST["xsubdistrict"];
 
@@ -56,8 +57,8 @@ if(empty($namepd) ||
 
     }else {
        
-		$sql = "INSERT INTO productbay (typemusic, namepd, price, description, tele, idline, img, user, province, area, district) 
-			VALUES ('$typemusic', '$namepd', '$pricepd', '$detailpd', '$telpd', '$linepd', '$image', '$UserName','$xprovince','$xdistrict','$xsubdistrict')";
+		$sql = "INSERT INTO productbay (typemusic, namepd, price, description, tele, idline, img, user, province, area, district, provinceInt) 
+			VALUES ('$typemusic', '$namepd', '$pricepd', '$detailpd', '$telpd', '$linepd', '$image', '$UserName','$xprovince','$xdistrict','$xsubdistrict','$provinceInt')";
 
         $query = mysqli_query($conn, $sql);
 

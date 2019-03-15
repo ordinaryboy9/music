@@ -115,8 +115,7 @@ margin-left:-10px
           <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
-            <a href="logout.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
-          </div>
+  <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>          </div>
         </div>
     </div>
       <?php endif;?>
@@ -242,7 +241,7 @@ margin-left:-10px
         <!-- Brands --><!-- End Brands -->
         <!-- Footer -->
         <div id="footer">
-          <div class="left"> <a href="#">Home</a> <span>|</span> <a href="#">Support</a> <span>|</span> <a href="#">My Account</a> <span>|</span> <a href="#">The Store</a> <span>|</span> <a href="#">Contact</a> </div>
+          <div class="left"></div>
         </div>
         <!-- End Footer -->
       </div>

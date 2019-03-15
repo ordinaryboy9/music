@@ -10,15 +10,6 @@
 <script src="js/jquery.slide.js" type="text/javascript"></script>
 <script src="js/jquery-func.js" type="text/javascript"></script>
 <style>
-.row{
-	display:-webkit-box;
-	display:-ms-flexbox;
-	display:flex;
-	-ms-flex-wrap:wrap;
-	flex-wrap:wrap;
-	margin-right:-10px;
-	margin-left:-10px
-}
 .dropbtn {
   background-color: #FFFF66;
   color: white;
@@ -85,7 +76,8 @@
           <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
-  <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>          </div>
+            <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+          </div>
         </div>
     </div>
       <?php endif;?>
@@ -115,59 +107,44 @@
       
       <div class="right"></div>
     </div>
-   
+    </div>
+    </div>
     <!-- End Search, etc -->
     <!-- Content -->
     <div id="content"><!-- Tabs --><!-- Tabs -->
       <!-- Container -->
-      <div id="container">
-        <div class="tabbed" align="center" style="margin-left: 12%">
-          <div id=<div align="center" class="row">
-              <div> <a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=guitaret">
-              <img src="css/images/button.gif" width="250" height="200"  /></a>
-                  <div>
-                     <font>กีต้าร์ไฟฟ้า</font>
-                  </div>
-              </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=guitar">
-                  <img src="css/images/buttonguter.gif" width="250" height="200"  /></a>
-                  <div>
-                     <font>กีต้าร์โปร่ง</font>
-                  </div>
-              </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=drum">
-                  <img src="css/images/buttondrum.gif" width="250" height="200"  />
-                  <div>
-                     <font>กลอง</font>
-                  </div>
-              </div>
-          </div>
-          <div id=<div align="center" class="row">
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=bass">
-                  <img src="css/images/buttonbass.gif" width="250" height="200"  />
-                  <div>
-                     <font>กีต้าร์เบส</font>
-                  </div>
-              </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=effects">
-                  <img src="css/images/buttoneff.gif" width="250" height="200"  />
-                  <div>
-                     <font>เอฟเฟค</font>
-                  </div>
-              </div>
-              <div><a href="pdguterbay.php?UserName=<?php echo $Username; ?>&TypeMusic=items">
-                  <img src="css/images/buttonnn.gif" width="250" height="200"  />
-                  <div>
-                     <font>รายการอื่นๆ</font>
-                  </div>
-              </div>
-          </div>
-        </div>
-        <!-- Brands --><!-- End Brands -->
-        <!-- Footer -->
-        <div id="footer">
-          <div class="left"></div>
-        </div>
+      <div id="container"><!-- Brands --><!-- End Brands -->
+      <div align="center" style="font-size:18px ; color:#000 ; margin-top:1%">
+      <p>ข้อมูลการลงสินค้า</p>
+      </div>
+        <center><!-- Footer -->
+        <table width="800" border="1" height="60" style="margin-top:15px; font-size:20px">
+  <tr align="center" bgcolor="#999999" style="color:#FF0">  
+    <td>ชื่อสินค้า</td>
+    <td>ราคาสินค้า</td>
+    <td>รูป</td>
+    <td>รายละอียด</td>
+    <td>เบอร์โทร</td>
+    <td>ไลน์</td>
+    <td>แก้ไข</td>
+    <td>ลบ</td> 
+  </tr>
+  
+    <tr align="center">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><a>แก้ไข</a></td>
+    <td><a>ลบ</a></td
+    
+  </tr>
+ 
+</table>
+</center>
+
         <!-- End Footer -->
       </div>
       <!-- End Container -->

@@ -7,6 +7,7 @@ include("connect.php");
     $tele = $_POST["tele"];
     $idline = $_POST["idline"];
 	$xprovince = $_POST["provinces"];
+	$provinceInt = $_POST["xprovince"];
 	$xdistrict = $_POST["xdistrict"];
 	$xsubdistrict = $_POST["xsubdistrict"];
 
@@ -40,8 +41,8 @@ include("connect.php");
 
     }else {
        
-		$sql = "INSERT INTO productrent (namepd, price, description, tele, idline, img, user, province, area, district)
-			VALUES ('$namepd', '$price', '$description', '$tele', '$idline', '$image', '$UserName','$xprovince','$xdistrict','$xsubdistrict')";
+		$sql = "INSERT INTO productrent (namepd, price, description, tele, idline, img, user, province, area, district, provinceInt)
+			VALUES ('$namepd', '$price', '$description', '$tele', '$idline', '$image', '$UserName','$xprovince','$xdistrict','$xsubdistrict','$provinceInt')";
 
         $query = mysqli_query($conn, $sql);
 

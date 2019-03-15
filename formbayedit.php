@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Music</title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset="utf-8" />
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
 <!--[if lte IE 6]><style type="text/css" media="screen">.tabbed { height:420px; }</style><![endif]-->
 <script src="js/jquery-1.4.1.min.js" type="text/javascript"></script>
@@ -51,13 +51,21 @@
 </head>
 <body>
  <?php 
+ include("connect.php");
 	$Username = "";
 
 	if(isset($_GET["UserName"])){
 		$Username = $_GET["UserName"];
 	}
+	$ID = $_GET['ID'];
+	
+$sql = "SELECT * FROM productbay WHERE id = '$ID'";
+        $query = mysqli_query($conn, $sql);
+        $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
+?>
 ?>
 <!-- Top -->
+<iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
 <div id="top">
   <div class="shell">
     <!-- Header -->
@@ -66,7 +74,7 @@
     	<img src="css/images/logo.jpg" class="site_logoo" alt="" />
     </a>
    
-	<?php if($Username === ''):header("location:login.php?");?>
+	<?php if($Username === ''): header("location:login.php?"); ?>
       <div id="navigation">
         <ul>
           <li>  <a href="formrg.php">สมัครสมาชิก</a></li>
@@ -80,7 +88,8 @@
           <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
-  <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>          </div>
+            <a href="logout.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+          </div>
         </div>
     </div>
       <?php endif;?>
@@ -115,64 +124,81 @@
       <!-- Container -->
       <div id="container">
         <div class="tabbed" align="center" style="margin-left: 12%">
-          <form id="form1" name="form1" method="post" action="Insertrent.php?UserName=<?php echo $Username; ?>" enctype="multipart/form-data">
+          <form id="form1" name="form1" method="post" action="Update_Produce.php?UserName=<?php echo $Username; ?>" enctype="multipart/form-data" target="iframe_target"> 
+          <iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
           <div class="tab-content" style="display:block;">
             <h1><center>
-            ลงเช่าสินค้า
-                <table width="68%" border="0" style="font-size:18px; margin-top:30px" >
-             
+            แก้ไขสินค้า
+                <table width="80%" border="0" style="font-size:18px; margin-top:30px" >
               <tr>
-                <td height="35" align="right"><b style="margin-right: 10px"> ชื่อสินค้าที่คุณต้องการลงเช่า </b></td>
-                <td><input type="text" name="namepd"  style="height: 20px; width: 200px" required /></td>
+                <td 
+                height="35" align="right"><b style="margin-right: 10px"> เลือกหมวดหมู่ให้ตรงกับสินค้า </b>
+                </td>
+                <td>
+                <select name="typemusic" id="typemusic" style="height: 30px; width: 200px; font-size:15px">
+                  <option value="guitar" <?php if($result["typemusic"]=="guitar") echo 'selected="selected"'; ?>> กีต้าร์โปร่ง</option>
+                  <option value="guitaret" <?php if($result["typemusic"]=="guitaret") echo 'selected="selected"'; ?>> กีต้าร์ไฟฟ้า</option>
+                  <option value="bass" <?php if($result["typemusic"]=="bass") echo 'selected="selected"'; ?>> กีต้าร์เบส</option>
+                  <option value="drum" <?php if($result["typemusic"]=="drum") echo 'selected="selected"'; ?>> กลอง</option>
+                  <option value="effects" <?php if($result["typemusic"]=="effects") echo 'selected="selected"'; ?>> เอฟเฟค</option>
+                  <option value="items" <?php if($result["typemusic"]=="items") echo 'selected="selected"'; ?>> รายการอื่นๆ</option>
+                </select>
+                </td>
               </tr>
               <tr>
-                <td height="35" align="right"><b style="margin-right: 10px"> ระบุราคาค้าบริการต่อวัน </b></td>
-                <td><input type="text" name="price"  style="height: 20px; width: 200px" required/></td>
+                <td height="35" align="right"><b style="margin-right: 10px"> ชื่อสินค้าที่คุณต้องการลงขาย </b></td>
+                <td><input type="text" name="namepd" style="height: 20px; width: 200px" value="<?php echo $result["namepd"]; ?>" readonly/></td><input name="old_namepd" type="hidden" id="old_namepd" value="<?php echo $result["namepd"]; ?>" />
+                <input name="id" type="hidden" id="id" value="<?php echo $result["id"]; ?>" />
+                <input name="user" type="hidden" id="user" value="<?php echo $result["user"]; ?>" />
               </tr>
-              
+              <tr>
+                <td height="35" align="right"><b style="margin-right: 10px"> ระบุราคาสินค้า </b></td>
+                <td><input type="text" name="pricepd" style="height: 20px; width: 200px" value="<?php echo $result["price"]; ?>" /></td>
+              </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> รูปภาพ </b></td>
-                <td><input type="file" name="img" required /></td>
-              </tr> 
+                <td><input type="file" name="imgpd" style="font-size:18px;" value="<?php echo $result["img"]; ?>"/></td>
+                <input name="old_imgpd" type="hidden" id="old_imgpd" value="<?php echo $result["img"]; ?>" />
+              </tr>
               <tr>
                   <td height="35" align="right"><p style="margin-right: 10px">จังหวัด</p></td>
-                  <td><select id="xprovince" name="xprovince" style="height: 20px; width: 200px" ></select>
-                  <input type="hidden" id="provinces" name="provinces"></td>
+                  <td><select id="xprovince" name="xprovince" style="height: 20px; width: 200px" value="<?php echo $result["provinceInt"]; ?>"></select>
+                  <input type="hidden" id="provinces" name="provinces" value="<?php echo $result["province"]; ?>"></td>
                  
               </tr>
               <tr>
               		<td height="35" align="right"><p style="margin-right: 10px">เขต/อำเภอ</p></td>
-                  <td><select id="xdistrict" name="xdistrict" style="height: 20px; width: 200px"></select></td>
+                  <td><select id="xdistrict" name="xdistrict" style="height: 20px; width: 200px" value="<?php echo $result["area"]; ?>"></select></td>
                   
               </tr>
               <tr>
               	<td height="35" align="right"><p style="margin-right: 10px">แขวง/ตำบล</p></td>
-                  <td><select id="xsubdistrict" name="xsubdistrict" style="height: 20px; width: 200px"></select></td>
+                  <td><select id="xsubdistrict" name="xsubdistrict" style="height: 20px; width: 200px" value="<?php echo $result["district"]; ?>"></select></td>
                   
               </tr>
               <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> รายละเอียดสินค้า </b></td>
                 <td>
-                <textarea name="description" cols="40" rows="6" required;></textarea>
+                <textarea name="detailpd" cols="40" rows="6"><?php echo $result["description"]; ?></textarea>
                 </td>
               </tr>
                <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> เบอร์โทรติดต่อ </b></td>
-                <td><input type="text" name="tele"  style="height: 20px; width: 200px"required /></td>
+                <td><input type="text" name="telpd" style="height: 20px; width: 200px" value="<?php echo $result["tele"]; ?>" /></td>
               </tr>
                <tr>
                 <td height="35" align="right"><b style="margin-right: 10px"> LineID </b></td>
-                <td><input type="text" name="idline" style="height: 20px; width: 200px" required/></td>
+                <td><input type="text" name="linepd" style="height: 20px; width: 200px" value="<?php echo $result["idline"]; ?>" /></td>
               </tr>
                <em> 
             </table>
-            <input type="submit" value="ลงประกาศ"  style="height:30px;" width="80px"/>
+            <input type="submit" value="บันทึกการเปลี่ยนแปลง"  style="height:30px; width:80px;font-size:18px;"/>
            
             </center></h1>
-        <p><center></center></p>
+            </div>
           </form>
-        </div>
-        <!-- Brands --><!-- End Brands -->
+             
+           <!-- Brands --><!-- End Brands -->
         <!-- Footer -->
         <div id="footer"></div>
         <!-- End Footer -->
@@ -190,9 +216,9 @@ $(function(){
 		eProvinceID: "#xprovince",
 		eDistrictID: "#xdistrict",
 		eSubDistrictID: "#xsubdistrict",
-		SelectProvince : "10", /*10 = กรุงเทพฯ*/
-		SelectDistrict: "",
-		SelectSubDistrict: ""
+		SelectProvince : "<?php echo $result["provinceInt"]; ?>", /*10 = กรุงเทพฯ*/
+		SelectDistrict: "<?php echo $result["area"]; ?>",
+		SelectSubDistrict: "<?php echo $result["district"]; ?>"
 
 	});
 el = document.getElementById('xprovince')

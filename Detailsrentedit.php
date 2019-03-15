@@ -200,21 +200,17 @@ margin-left:-10px
                  		<li> <a style="margin-left:5px"><?php echo ($result["idline"]);?></a> </li>
                    		</ul>
                      </div>
-                   <div class="row">
-                	 <img src="css/images/calendar.png"  style="width:60px; height:70px; padding-top: 10%"/>
+                  <div class="row">
+                	 <img src="css/images/edit-png.png"  style="width:50px; height:60px; padding-top: 10%"/>
                  		<ul>
-                 		<li> 
-                        <input type="text" name="daterange" id="daterange" placeholder="xx-xx-xxxx - xx-xx-xxxx" class="daterangepickerBigInput" />
-                        </li>
+                 		<li> <a style="margin-left:5px" href="formrentED.php?UserName=<?php echo $Username; ?>&ID=<?php echo ($result["id"]);?>">แก้ไขประกาศ</a> </li>
                    		</ul>
-                     </div>
-                   <div class="row">
-                	 <img src="css/images/maths.png"  style="width:60px; height:80px; padding-top: 10%"/>
+                     </div>	
+                   	<div class="row">
+                	 <img src="css/images/Trash_Can-512.png"  style="width:60px; height:60px; padding-top: 10%"/>
                  		<ul>
-                 		<li> <input type="text" name="tetal" id="tetal" style="height: 20px; width: 90px" readonly="readonly" value="0" /></a> </li>
-                   		</ul>
-                        <ul>
-                 		<li> <a> บาท </a> </li>
+                 		<li> <a href="JavaScript:if(confirm('ต้องการลบสินค้าใช่ไหม?')==true)
+                {window.location='deleterent.php?UserName=<?php echo $Username; ?>&ID=<?php echo ($result["id"]);?>';}" style="margin-left:5px" >ลบ/ปิดการขาย</a> </li>
                    		</ul>
                      </div>
                     </div>

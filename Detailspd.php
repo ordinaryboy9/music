@@ -125,8 +125,7 @@ margin-left:-10px
           <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
-            <a href="logout.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
-          </div>
+  <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>          </div>
         </div>
     </div>
       <?php endif;?>
@@ -210,8 +209,8 @@ margin-left:-10px
         </div>
         </div>
          <?php
-
-        $sql = "SELECT * FROM arComments order by datetime asc";
+		$namepd = $result["namepd"];
+        $sql = "SELECT * FROM arComments where namepd = '$namepd' order by datetime asc";
         $query = mysqli_query($conn, $sql);
 		$nameHead;
 		$datetime;
@@ -219,7 +218,7 @@ margin-left:-10px
 			{ 
 			$nameHead = $result["name"];
 			$datetime = $result["datetime"];
-			$sqluser = "SELECT * FROM commentuser WHERE nameHead = '$nameHead' AND datetimeuser = '$datetime' order by datetime asc";
+			$sqluser = "SELECT * FROM commentuser WHERE nameHead = '$nameHead' AND namepd = '$namepd' AND datetimeuser = '$datetime' order by datetime asc";
         	$queryuser = mysqli_query($conn, $sqluser);
 		?>
 			<div style="border: 2px solid black; margin-top: 1%; width:80%; padding: 10px;text-align:center;" id="auto">
@@ -244,6 +243,7 @@ margin-left:-10px
                     <font class="font-16">แสดงความคิดเห็น :</font>
                     <input type="hidden" name="AR_Date" value="<?php echo date('Y-m-d H:i:s');?>"/>
                     <input type="hidden" name="AR_UserName" value="<?php echo $Username;?>"/>
+                    <input type="hidden" name="AR_Namepd" value="<?php echo $namepd;?>"/>
                     <input type="hidden" name="AR_nameHead" value="<?php echo $nameHead;?>"/>
                     <input type="hidden" name="AR_datetimeuser" value="<?php echo $datetime;?>"/>
                     <textarea name="AR_Datile" cols="20" rows="7" style="width: 100%; display:block;"></textarea>
@@ -266,6 +266,7 @@ margin-left:-10px
             <iframe id="iframe_target" name="iframe_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
                 <div style="width: 50%; display:inline-block; position:relative; text-align: center;">
                     <font class="font-16">แสดงความคิดเห็น :</font>
+                    <input type="hidden" name="AR_Namepd" value="<?php echo $namepd;?>"/>
                     <input type="hidden" name="AR_Date" value="<?php echo date('Y-m-d H:i:s');?>"/>
                     <input type="hidden" name="AR_UserName" value="<?php echo $Username;?>"/>
                     <textarea name="AR_Datile" cols="20" rows="7" style="width: 100%; display:block;"></textarea>
