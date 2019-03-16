@@ -27,9 +27,19 @@ margin-left:-10px
 <?php 
 include("connect.php");
 $UserName = $_GET['UserName'];
+$UserNames = null;
+if(isset($_GET['UserNameuser'])){
+	$UserNames = $_GET['UserNameuser'];
+}
+if($UserNames == null ){
 $sql = "SELECT * FROM user WHERE user = '$UserName'";
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
+}else{
+	$sql = "SELECT * FROM user WHERE user = '$UserNames'";
+        $query = mysqli_query($conn, $sql);
+        $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
+}
 ?>
 <!-- Top -->
 <div id="top">

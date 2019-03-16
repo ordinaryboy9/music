@@ -79,6 +79,16 @@
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
             <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+            <?php
+			include('connect.php');
+			$Sql_Query = "select * from user where user = '$Username' and status = 'admin' ";
+			$query = mysqli_query($conn, $Sql_Query);
+			$result = mysqli_fetch_array($query, MYSQLI_ASSOC);
+			if ($result){ ?>
+            <a href="Admindata.php?UserName=<?php echo ($result['user']); ?>">จัดการข้อมูลสมาชิก</a>
+            <a href="Admindetel.php?UserName=<?php echo ($result['user']); ?>">จัดก่ารข้อมูลสินค้า</a>
+            <?php }else{ ?>
+            <?php }?>
           </div>
         </div>
     </div>

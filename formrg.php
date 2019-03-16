@@ -42,6 +42,7 @@
           <div class="dropdown-content">
             <a href="logout.php?username=<?php echo $Username; ?>">ออกจากระบบ</a>
             <a href="logout.php?username=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+            
           </div>
         </div>
     </div>

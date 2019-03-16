@@ -23,12 +23,14 @@
 }
 
 .dropdown-content {
-  display: none;
+ display: none;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  right:0;
+  left:auto;
 }
 
 .dropdown-content a {
@@ -77,6 +79,16 @@
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
             <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+             <?php
+			include('connect.php');
+			$Sql_Queryuser = "select * from user where user = '$Username' and status = 'admin' ";
+			$queryuser = mysqli_query($conn, $Sql_Queryuser);
+			$resultuser = mysqli_fetch_array($queryuser, MYSQLI_ASSOC);
+			if ($resultuser){ ?>
+            <a href="Admindata.php?UserName=<?php echo ($resultuser['user']); ?>">จัดการข้อมูลสมาชิก</a>
+            <a href="Admindetel.php?UserName=<?php echo ($resultuser['user']); ?>">จัดก่ารข้อมูลสินค้า</a>
+            <?php }else{ ?>
+            <?php }?>
           </div>
         </div>
     </div>
@@ -98,6 +110,12 @@
     <!-- End Slider -->
   </div>
 </div>
+ <?php
+
+			include('connect.php');
+			$Sql_Query = "select * from user";
+			$query = mysqli_query($conn, $Sql_Query);
+?>
 <!-- Top -->
 <!-- Main -->
 <div id="main">
@@ -118,7 +136,7 @@
       <p>ฐานข้อมูลสมาชิก</p>
       </div>
         <center><!-- Footer -->
-        <table width="800" border="1" height="60" style="margin-top:15px; font-size:20px">
+        <table width="90%" border="1" height="60" style="margin-top:15px; font-size:20px">
   <tr align="center" bgcolor="#999999" style="color:#FF0">  
     <td>Username</td>
     <td>Password</td>
@@ -130,20 +148,30 @@
     <td>Edit</td>
     <td>Delete</td> 
   </tr>
-  
-    <tr align="center" style="font-size:15px	">
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td> <a>ประวัติการลงสินค้า</a> </td>
-    <td><a>แก้ไข</a></td>
-    <td><a>ลบ</a></td>
+  <?php
+		
+	while($result = mysqli_fetch_array($query, MYSQLI_ASSOC))
+	{
+    ?>
+    <tr align="center" style="font-size:15px">
+    <td><?php echo ($result["user"]);?></td>
+    <td><?php echo ($result["pass"]);?></td>
+    <td style="width:15%"><?php echo ($result["name"]);?></td>
+    <td><?php echo ($result["email"]);?></td>
+    <td><?php echo ($result["tel"]);?></td>
+    <td><?php echo ($result["idcard"]);?></td>
+    <td style="width:15%"><a href="Admindetel.php?user=<?php echo ($result["user"]);?>&UserName=<?php echo $Username; ?>"> ประวัติการลงสินค้า</a> </td>
+     <td align="center">
+        <a href="editprofile.php?UserNameuser=<?php echo ($result["user"]);?>&UserName=<?php echo $Username; ?>"> แก้ไข </a>
+    </td>
+    <td align="center">
+        <a href="JavaScript:if(confirm('ต้องการลบผู้ใช้งานคนนี้ใช่ไหม?')==true){window.location='deleteUser.php?ID=<?php echo ($result["userid"]);?>&UserName=<?php echo $Username; ?>';}"> ลบ </a>
+    </td>
     
   </tr>
- 
+ <?php
+	}
+?>
 </table>
 </center>
 

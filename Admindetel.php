@@ -23,12 +23,14 @@
 }
 
 .dropdown-content {
-  display: none;
+   display: none;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  right:0;
+  left:auto;
 }
 
 .dropdown-content a {
@@ -77,6 +79,16 @@
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
             <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>
+             <?php
+			include('connect.php');
+			$Sql_Queryuser = "select * from user where user = '$Username' and status = 'admin' ";
+			$queryuser = mysqli_query($conn, $Sql_Queryuser);
+			$resultuser = mysqli_fetch_array($queryuser, MYSQLI_ASSOC);
+			if ($resultuser){ ?>
+            <a href="Admindata.php?UserName=<?php echo ($resultuser['user']); ?>">จัดการข้อมูลสมาชิก</a>
+            <a href="Admindetel.php?UserName=<?php echo ($resultuser['user']); ?>">จัดก่ารข้อมูลสินค้า</a>
+            <?php }else{ ?>
+            <?php }?>
           </div>
         </div>
     </div>
@@ -98,6 +110,28 @@
     <!-- End Slider -->
   </div>
 </div>
+<?php
+include('connect.php');
+ $user = null;
+
+	if(isset($_GET["user"])){
+		$user = $_GET["user"];
+	}
+	if($user !== null){
+			$Sql_Query = "select * from productbay where user = '$user'";
+			$query = mysqli_query($conn, $Sql_Query);
+			
+			$Sql_Queryrent = "select * from productrent where user = '$user'";
+			$queryrent = mysqli_query($conn, $Sql_Queryrent);
+	}else{
+			$Sql_Query = "select * from productbay";
+			$query = mysqli_query($conn, $Sql_Query);
+			
+			$Sql_Queryrent = "select * from productrent";
+			$queryrent = mysqli_query($conn, $Sql_Queryrent);
+			
+	}
+?>
 <!-- Top -->
 <!-- Main -->
 <div id="main">
@@ -115,7 +149,7 @@
       <!-- Container -->
       <div id="container"><!-- Brands --><!-- End Brands -->
       <div align="center" style="font-size:18px ; color:#000 ; margin-top:1%">
-      <p>ข้อมูลการลงสินค้า</p>
+      <p>ข้อมูลการลงขายสินค้า</p>
       </div>
         <center><!-- Footer -->
         <table width="800" border="1" height="60" style="margin-top:15px; font-size:20px">
@@ -126,25 +160,80 @@
     <td>รายละอียด</td>
     <td>เบอร์โทร</td>
     <td>ไลน์</td>
+    <td>ผู้เพิ่ม</td>
     <td>แก้ไข</td>
     <td>ลบ</td> 
   </tr>
-  
+   <?php
+		
+	while($result = mysqli_fetch_array($query, MYSQLI_ASSOC))
+	{
+    ?>
     <tr align="center">
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td><a>แก้ไข</a></td>
-    <td><a>ลบ</a></td
+    <td><?php echo ($result["namepd"]);?></td>
+    <td><?php echo ($result["price"]);?></td>
+    <td align="center" style="width: 10%"><img src="<?php echo ($result["img"]) ?>" width="70" height="70" ></td>
+       <td align="center"><textarea rows="4" style="margin-top: 2%; width: 90%" readonly="readonly"><?php echo ($result["description"]) ?></textarea></td>
+    <td><?php echo ($result["tele"]);?></td>
+    <td><?php echo ($result["idline"]);?></td>
+    <td><?php echo ($result["user"]);?></td>
+    <td align="center">
+        <a href="formbayedit.php?ID=<?php echo ($result["id"]);?>&UserName=<?php echo $Username; ?>"> แก้ไข </a>
+    </td>
+    <td align="center">
+        <a href="JavaScript:if(confirm('ต้องการลบสิ้นค้านี้ใช่ไหม?')==true){window.location='deletepd.php?ID=<?php echo ($result["id"]);?>&UserName=<?php echo $Username; ?>';}"> ลบ </a>
+    </td>
     
-  </tr>
- 
+ </tr>
+ <?php
+	}
+?>
 </table>
 </center>
 
+<div id="container"><!-- Brands --><!-- End Brands -->
+      <div align="center" style="font-size:18px ; color:#000 ; margin-top:1%">
+      <p>ข้อมูลการลงเช่าสินค้า</p>
+      </div>
+        <center><!-- Footer -->
+        <table width="800" border="1" height="60" style="margin-top:15px; font-size:20px">
+  <tr align="center" bgcolor="#999999" style="color:#FF0">  
+    <td>ชื่อสินค้า</td>
+    <td>ราคาสินค้า</td>
+    <td>รูป</td>
+    <td>รายละอียด</td>
+    <td>เบอร์โทร</td>
+    <td>ไลน์</td>
+    <td>ผู้เพิ่ม</td>
+    <td>แก้ไข</td>
+    <td>ลบ</td> 
+  </tr>
+   <?php
+		$admin ='admin';
+	while($resultrent = mysqli_fetch_array($queryrent, MYSQLI_ASSOC))
+	{
+    ?>
+    <tr align="center">
+   <td><?php echo ($resultrent["namepd"]);?></td>
+    <td><?php echo ($resultrent["price"]);?></td>
+    <td align="center" style="width: 10%"><img src="<?php echo ($resultrent["img"]) ?>" width="70" height="70" ></td>
+       <td align="center"><textarea rows="4" style="margin-top: 2%; width: 90%" readonly="readonly"><?php echo ($resultrent["description"]) ?></textarea></td>
+    <td><?php echo ($resultrent["tele"]);?></td>
+    <td><?php echo ($resultrent["idline"]);?></td>
+    <td><?php echo ($resultrent["user"]);?></td>
+    <td align="center">
+        <a href="formrentED.php?UserName=<?php echo $Username; ?>&ID=<?php echo ($resultrent["id"]);?>"> แก้ไข </a>
+    </td>
+    <td align="center">
+        <a href="JavaScript:if(confirm('ต้องการลบสิ้นค้านี้ใช่ไหม?')==true){window.location='deleterent.php?ID=<?php echo ($resultrent["id"]);?>&UserName=<?php echo $Username; ?>&admin=<?php echo $admin; ?>';}"> ลบ </a>
+    </td>
+    
+  </tr>
+  <?php
+	}
+?>
+</table>
+</center>
         <!-- End Footer -->
       </div>
       <!-- End Container -->

@@ -33,6 +33,8 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  right:0;
+  left:auto;
 }
 
 .dropdown-content a {
@@ -57,9 +59,10 @@
 	if(isset($_GET["UserName"])){
 		$Username = $_GET["UserName"];
 	}
+	
 	$ID = $_GET['ID'];
 	
-	$sql = "SELECT * FROM productrent WHERE id = '$ID'";
+	$sql = "SELECT * FROM productrent WHERE id = '".$ID."' ";
         $query = mysqli_query($conn, $sql);
         $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
 ?>
@@ -86,7 +89,18 @@
           <button class="dropbtn"><img src="css/images/aeeow_drow.png" width="20" height="20" /></button>
           <div class="dropdown-content">
             <a href="index.php?UserName=""<?php echo $Username; ?>">ออกจากระบบ</a>
-  <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>          </div>
+  <a href="editprofile.php?UserName=<?php echo $Username; ?>">แก้ไขขอมูลส่วนตัว</a>      
+    <?php
+			include('connect.php');
+			$Sql_Queryuser = "select * from user where user = '$Username' and status = 'admin' ";
+			$queryuser = mysqli_query($conn, $Sql_Queryuser);
+			$resultuser = mysqli_fetch_array($queryuser, MYSQLI_ASSOC);
+			if ($resultuser){ ?>
+            <a href="Admindata.php?UserName=<?php echo ($resultuser['user']); ?>">จัดการข้อมูลสมาชิก</a>
+            <a href="Admindetel.php?UserName=<?php echo ($resultuser['user']); ?>">จัดก่ารข้อมูลสินค้า</a>
+            <?php }else{ ?>
+            <?php }?>
+                </div>
         </div>
     </div>
       <?php endif;?>
